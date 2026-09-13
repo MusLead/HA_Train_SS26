@@ -1,0 +1,4 @@
+PWD /Users/aslam/Library/Mobile Documents/com~apple~CloudDocs/HS_Fulda/BSc_AInformatik/Wiss_IT-Sicherheit/Wiss_Arbeit/Hausarbeit
+INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/web2c/texmf.cnf
+INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-var/web2c/pdftex/pdflatex.fmt
+OUTPUT texput.log
