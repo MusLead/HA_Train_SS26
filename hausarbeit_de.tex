@@ -68,7 +68,21 @@ Diese Hausarbeit vergleicht ausgewählte europäische und japanische Ansätze de
 \subsection{Sicherheitskritische Eisenbahnkommunikation}
 \label{sec:Sicherheitskritische_Eisenbahnkommunikation}
 
-Sicherheitskritische Eisenbahnkommunikation umfasst die Übertragung von Informationen, die Zugbewegungen oder die betriebliche Sicherheit beeinflussen, etwa \textit{Movement Authorities}, Brems- und Geschwindigkeitsinformationen, Zugpositionsmeldungen oder Notstopp-Nachrichten~\parencite[S. 120–121]{trinckaufETCS2024}. Werden solche Informationen verändert, verzögert, wiederholt oder gefälscht, können Fehlentscheidungen oder restriktive Systemzustände die Folge sein~\parencite[S. 17]{iwamotoTrain2024}. Die Kommunikation ist daher als Bestandteil eines sicherheitskritischen Regelkreises und nicht nur als technischer Datenaustausch zu betrachten.
+%TODO sorting lagi source yang memang tidak perlu dipakai... terlalu banyak menurut aku
+Sicherheitskritische Eisenbahnkommunikation bezeichnet die Übertragung von Informationen, die Zugbewegungen oder die betriebliche Sicherheit beeinflussen können 
+% \parencite[S. 118]{trinckaufETCS2024}
+% \parencite[S. 743]{chothiaAttack2017}. 
+Beispiele sind \textit{Movement Authorities}, Bremsinformationen, Streckenstatus, Geschwindigkeitsprofile, Zugpositionsmeldungen, Notstopp-Nachrichten und betriebliche Anweisungen 
+\unskip~\parencite[S. 120--121]{trinckaufETCS2024}
+% \parencite[S. 14]{iwamotoTrain2024}
+% \parencite[S. 55, 57]{gaggeroSurvey2024}. 
+Wenn solche Informationen verändert, verzögert, wiederholt oder gefälscht werden, kann das System falsche Entscheidungen treffen oder in einen restriktiven Zustand wechseln 
+\unskip~\parencite[S. 17]{iwamotoTrain2024}
+% \parencite[S. 56, 58]{gaggeroSurvey2024}
+% \parencite[S. 204]{trinckaufETCS2024}
+% \parencite[S. 746]{chothiaAttack2017}. 
+Eisenbahnkommunikation muss daher nicht nur als technischer Datenaustausch, sondern als Teil eines größeren sicherheitskritischen Regelkreises analysiert werden. 
+% \parencite[S. 118, 204]{trinckaufETCS2024}.
 
 Vier Sicherheitsziele sind für diese Hausarbeit besonders wichtig. \textbf{Vertraulichkeit} dient dem Schutz vor der unberechtigten Offenlegung von Daten gegenüber Dritten 
 % \parencite[S. 207]{trinckaufETCS2024}
@@ -98,9 +112,9 @@ Ein wesentlicher Unterschied zwischen \textit{Safety} und \textit{Security} lieg
 \label{sec:Systemarchitektur}
 Unabhängig von regionalen Spezifikationen und Herstellern weisen funkbasierte Zugsteuerungssysteme (\textit{Communications-Based Train Control}, \gls{cbtc}) eine gemeinsame grundlegende Systemarchitektur auf~\parencite[S. 9--11]{xiangliuCyber2020}. Die Hauptfunktion besteht darin, eine sichere Zugfolgeabstandshaltung ohne ausschließliche Abhängigkeit von physischen Gleisstromkreisen zu gewährleisten~\parencite[S. 9]{xiangliuCyber2020}. Das Gesamtsystem gliedert sich in folgende zentrale Komponenten:
 
-\begin{figure}[H]
+\begin{figure}[[!htbp]]
 \centering
-\includegraphics[width=0.60\textwidth]{res/Bahn_Infrastruktur.jpg}
+\includegraphics[width=0.65\textwidth]{res/Bahn_Infrastruktur.jpg}
 \caption{Überblick über die Schieneninfrastruktur~\cite{xiangliuCyber2020}}
 \label{fig:Schieneninfrastruktur}
 \end{figure}
@@ -135,7 +149,7 @@ Das \textit{European Rail Traffic Management System} (\gls{ertms}) definiert das
 
 \begin{itemize}
 
-    \begin{figure}[H]
+    \begin{figure}[[!htbp]]
     \centering
     \includegraphics[width=0.65\textwidth]{res/ECTS_Level1.jpg}
     \caption{\gls{etcs} \textit{Level} 1~\cite{sansculotteETCSLevel1}}
@@ -144,7 +158,7 @@ Das \textit{European Rail Traffic Management System} (\gls{ertms}) definiert das
 
     \item \textbf{\gls{etcs} \textit{Level} 1:} Funktioniert als punktförmiges System, das meist als \textit{Overlay} auf bestehenden nationalen Signalsystemen installiert wird. Fahrterlaubnisse (\textit{Movement Authorities}, \gls{ma}) werden von der Streckenzentrale über \textit{Lineside Equipment Units} (\gls{leu}) an Eurobalisen übertragen, die beim Überfahren vom fahrzeugseitigen Balisenleser (\gls{btm}) ausgelesen werden. Die Streckeneinteilung basiert auf festen Blockabschnitten~\parencite[S. 50, 71]{trinckaufETCS2024}~\parencite[S. 744]{chothiaAttack2017}.
     
-    \begin{figure}[H]
+    \begin{figure}[[!htbp]]
     \centering
     \includegraphics[width=0.65\textwidth]{res/ECTS_Level2.jpg}
     \caption{\gls{etcs} \textit{Level} 2~\cite{arcETCS}}
