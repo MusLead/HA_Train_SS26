@@ -1,1 +1,10 @@
 build/
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.synctex.gz
