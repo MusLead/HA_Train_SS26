@@ -105,28 +105,52 @@ Für Europa werden vier Aspekte betrachtet: zunächst die funktionale Struktur d
 \label{sec:Struktur_und_Funktionsweise}
 Das \textit{European Rail Traffic Management System} (\gls{ertms}) definiert das \textit{European Train Control System} (\gls{etcs}) als einheitliches europäisches Zugsicherungssystem~\parencite[S. 49]{trinckaufETCS2024}. Die Interaktion zwischen Zug und Streckenausrüstung wird über \textit{Level} strukturiert:
 
-\begin{figure}[htbp!]
-    \centering
-    \begin{subfigure}[t]{0.48\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{res/ECTS_Level1.jpg}
-        \caption{\gls{etcs} \textit{Level} 1~\cite{sansculotteETCSLevel1}}
-        \label{fig:ETCS-level-1}
-    \end{subfigure}%
-    \hfill
-    \begin{subfigure}[t]{0.48\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{res/ECTS_Level2.jpg}
-        \caption{\gls{etcs} \textit{Level} 2~\cite{arcETCS}}
-        \label{fig:ETCS-level-2}
-    \end{subfigure}
-    \caption{ETCS Level 1 und Level 2}
-    \label{fig:ETCS-level-comparison}
-\end{figure}
+% \begin{figure}[htbp!]
+%     \centering
+%     \begin{subfigure}[t]{0.48\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{res/ECTS_Level1.jpg}
+%         \caption{\gls{etcs} \textit{Level} 1~\cite{sansculotteETCSLevel1}}
+%         \label{fig:ETCS-level-1}
+%     \end{subfigure}%
+%     \hfill
+%     \begin{subfigure}[t]{0.48\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{res/ECTS_Level2.jpg}
+%         \caption{\gls{etcs} \textit{Level} 2~\cite{arcETCS}}
+%         \label{fig:ETCS-level-2}
+%     \end{subfigure}
+%     \caption{ETCS Level 1 und Level 2}
+%     \label{fig:ETCS-level-comparison}
+% \end{figure}
 
 \begin{itemize}
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{res/ECTS_Level1.jpg}
+    \caption{\gls{etcs} \textit{Level} 1~\cite{sansculotteETCSLevel1}}
+    \label{fig:ETCS-level-1}
+    \end{figure}
+    
     \item \textbf{\gls{etcs} \textit{Level} 1:} Fahrterlaubnisse werden punktförmig über Eurobalisen an das Fahrzeug übertragen; die Streckeneinteilung beruht weiterhin auf festen Blockabschnitten~\parencite[S. 50, 71]{trinckaufETCS2024}.
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{res/ECTS_Level2.jpg}
+    \caption{\gls{etcs} \textit{Level} 2~\cite{arcETCS}}
+    \label{fig:ETCS-level-2}
+    \end{figure}
+    
     \item \textbf{\gls{etcs} \textit{Level} 2:} Zwischen Fahrzeug und \gls{rbc} besteht eine kontinuierliche Funkverbindung. Das \gls{rbc} verarbeitet Stellwerksinformationen und Positionsberichte und übermittelt daraus erzeugte \textit{Movement Authorities}; ortsfeste Signale sind technisch nicht mehr zwingend erforderlich~\parencite[S. 71, 89--90]{trinckaufETCS2024}.
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{res/ECTS_Level3.jpg}
+    \caption{\gls{etcs} \textit{Level} 3~\cite{arcETCS}}
+    \label{fig:ETCS-level-3}
+    \end{figure}
+
     \item \textbf{\gls{etcs} \textit{Level} 3:} Die Zugvollständigkeit wird fahrzeugseitig überwacht, wodurch gleisseitige Freimeldung reduziert und ein \textit{Moving Block} ermöglicht werden kann~\parencite[S. 471--472]{trinckaufETCS2024}.
 \end{itemize}
 
