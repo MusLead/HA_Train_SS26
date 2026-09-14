@@ -7,6 +7,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage{float}
 \usepackage{tabularx}
 \usepackage{booktabs}
@@ -133,23 +134,40 @@ Kryptographische Schutzmechanismen sichern die Vertraulichkeit und Authentizitä
 \label{sec:Struktur_und_Funktionsweise}
 Das \textit{European Rail Traffic Management System} (\gls{ertms}) definiert das \textit{European Train Control System} (\gls{etcs}) als einheitliches europäisches Zugsicherungssystem~\parencite[S. 49]{trinckaufETCS2024}. Die funktionale Interaktion zwischen Zug und Streckenausrüstung wird über Stufen (\textit{Level}) strukturiert:
 
-\begin{itemize}
-
-    \begin{figure}[htbp!]
+\begin{figure}[htbp!]
     \centering
-    \includegraphics[width=0.65\textwidth]{res/ECTS_Level1.jpg}
+    
+    \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=0.9\textwidth]{res/ECTS_Level1.jpg}
     \caption{\gls{etcs} \textit{Level} 1~\cite{sansculotteETCSLevel1}}
     \label{fig:ETCS-level-1}
-    \end{figure}
+    \end{subfigure}
+    
+    \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=0.9\textwidth]{res/ECTS_Level2.jpg}
+    \caption{\gls{etcs} \textit{Level} 2~\cite{arcETCS}}
+    \label{fig:ETCS-level-2}
+    \end{subfigure} 
+
+\end{figure}
+
+\begin{itemize}
+
+    % \begin{figure}[htbp!]
+    % \centering
+    % \includegraphics[width=0.65\textwidth]{res/ECTS_Level1.jpg}
+    % \caption{\gls{etcs} \textit{Level} 1~\cite{sansculotteETCSLevel1}}
+    % \label{fig:ETCS-level-1}
+    % \end{figure}
 
     \item \textbf{\gls{etcs} \textit{Level} 1:} Funktioniert als punktförmiges System, das meist als \textit{Overlay} auf bestehenden nationalen Signalsystemen installiert wird. Fahrterlaubnisse (\textit{Movement Authorities}, \gls{ma}) werden von der Streckenzentrale über \textit{Lineside Equipment Units} (\gls{leu}) an Eurobalisen übertragen, die beim Überfahren vom fahrzeugseitigen Balisenleser (\gls{btm}) ausgelesen werden. Die Streckeneinteilung basiert auf festen Blockabschnitten~\parencite[S. 50, 71]{trinckaufETCS2024}~\parencite[S. 744]{chothiaAttack2017}.
     
-    \begin{figure}[htbp!]
-    \centering
-    \includegraphics[width=0.65\textwidth]{res/ECTS_Level2.jpg}
-    \caption{\gls{etcs} \textit{Level} 2~\cite{arcETCS}}
-    \label{fig:ETCS-level-2}
-    \end{figure}
+    % \begin{figure}[htbp!]
+    % \centering
+    % \includegraphics[width=0.65\textwidth]{res/ECTS_Level2.jpg}
+    % \caption{\gls{etcs} \textit{Level} 2~\cite{arcETCS}}
+    % \label{fig:ETCS-level-2}
+    % \end{figure}
     
     \item \textbf{\gls{etcs} \textit{Level} 2:} Bietet eine kontinuierliche, funkbasierte Datenverbindung zwischen der fahrzeugseitigen \textit{On-Board-Unit} (\gls{obu}/\gls{evc}) und dem \textit{Radio Block Centre} (\gls{rbc}). Das \gls{rbc} verarbeitet Stellwerksinformationen sowie fahrzeugseitige Positionsberichte und generiert kontinuierlich \textit{Movement Authorities}, die per Funk an das Fahrzeug übertragen werden. Ortsfeste Signale an der Strecke sind technisch nicht mehr erforderlich~\parencite[S. 71, 89--90]{trinckaufETCS2024}.
     
@@ -167,7 +185,7 @@ Das \textit{European Rail Traffic Management System} (\gls{ertms}) definiert das
 
 \subsubsection{\texorpdfstring{Der \gls{ertms}-Kommunikationsstapel}{Der ERTMS-Kommunikationsstapel}}
 \label{sec:Der_ERTMS-Kommunikationsstapel}
-Die Kommunikation zwischen Zug und Radio Block Centre (RBC) ist in mehrere Protokollschichten gegliedert, die unterschiedliche Aufgaben bei Übertragung und Absicherung der ETCS-Daten übernehmen \parencite[S.744]{Cho+17a}.
+Die Kommunikation zwischen Zug und Radio Block Centre (RBC) ist in mehrere Protokollschichten gegliedert, die unterschiedliche Aufgaben bei Übertragung und Absicherung der ETCS-Daten übernehmen \parencite[S.744]{chothiaAttack2017}.
 
 \begin{table}[ht]
 \centering
@@ -181,20 +199,20 @@ Untere Schicht
 & GSM-R / RMR
 & Übertragungsinfrastruktur zwischen Fahrzeug und Strecke; Schutz der
 Funkschnittstelle, z.\,B. durch A5/1 oder A5/3
-\parencite[S.744, 750]{Cho+17a}. \\
+\parencite[S.744, 750]{chothiaAttack2017}. \\
 
 Mittlere Schicht
 & EuroRadio
 & Authentifizierung und Integritätsschutz der ETCS-Daten mittels
 Message Authentication Codes (MAC)
-\parencite[S.744, 751]{Cho+17a}. \\
+\parencite[S.744, 751]{chothiaAttack2017}. \\
 
 Anwendungsschicht
 & ETCS
 & Verarbeitung betrieblicher Daten wie Movement Authorities und
 Positionsberichte; Erkennung veralteter oder wiederholter Telegramme
 durch Zeitstempel und Sequenznummern
-\parencite[S.744, 754]{Cho+17a}. \\
+\parencite[S.744, 754]{chothiaAttack2017}. \\
 \bottomrule
 \end{tabularx}
 \end{table}
