@@ -101,6 +101,7 @@ Unabhängig von regionalen Spezifikationen und Herstellern weisen funkbasierte Z
 
 \begin{figure}[htbp!]
 \centering
+%TODO: RESIZE THIS IF THERE ARE MORE SPACE THAN NEEDED!
 \includegraphics[width=0.65\textwidth]{res/Bahn_Infrastruktur.jpg}
 \caption{Überblick über die Schieneninfrastruktur~\cite{xiangliuCyber2020}}
 \label{fig:Schieneninfrastruktur}
@@ -324,6 +325,48 @@ Die Literatur wird in vier Schritten ausgewertet:
 
 \section{Diskussion}
 \label{sec:Diskussion}
+
+\subsection{Stand der Forschung und verwandte Arbeiten} \label{sec:Stand_der_Forschung_und_verwandte_Arbeiten}
+Die vorliegende Hausarbeit baut auf einer Reihe zentraler wissenschaftlicher Veröffentlichungen, technischer Standards und Risikoanalysen auf, die Teilaspekte der sicherheitskritischen Eisenbahnkommunikation untersuchen. Die relevanten Arbeiten lassen sich in vier thematische Schwerpunkte gliedern:
+
+\subsubsection{Kryptographische Protokollanalysen und Kommunikationsschwachstellen}
+\begin{itemize}
+    \item \textbf{Chothia et al. (2017) -- \textit{An Attack Against Message Authentication in the ERTMS Train to Trackside Communication Protocols}:}
+    Chothia et al. führen eine kryptographische Formalanalyse des ERTMS-Protokollstapels (GSM-R, EuroRadio, ETCS Application Layer) durch \parencite[S. 743--756]{chothiaAttack2017}. Sie weisen nach, dass die EuroRadio-MAC-Konstruktion aufgrund der geringen Blocklänge (64 Bit) und des Einsatzes von Single-DES anfällig für kollisionsbasierte Key-Recovery-Angriffe ist. Dadurch können Angreifer nach dem Beobachten von MAC-Kollisionen gefälschte \textit{Movement Authorities} (z. B. in Paket 72) injizieren \parencite[S. 751--754]{chothiaAttack2017}. Diese Arbeit bildet in der vorliegenden Hausarbeit die empirische Evidenz für die kryptographischen Schwachstellen der europäischen Bestandsinfrastruktur.
+
+    \item \textbf{Gaggero et al. (2024) -- \textit{A Survey on Wireless-Communication Vulnerabilities of ERTMS in the Railway Sector}:}
+    Gaggero et al. bieten einen systematischen Survey über drahtlose Kommunikationsschwachstellen im ERTMS-Standard und unterteilen diese in Nahbereichs- (Eurobalise) und Fernfeldverbindungen (GSM-R) \parencite[S. 52--61]{gaggeroSurvey2024}. Sie arbeiten das operative Paradoxon der \textit{Intrinsic Safety} heraus: Da ein Kommunikationsverlust aus Safety-Gründen automatisch einen Zughalt erzwingt, wird das System anfällig für Denial-of-Service- und Jamming-Angriffe \parencite[S. 56--59]{gaggeroSurvey2024}. Ihre Arbeit liefert die grundlegende Taxonomie für das Spannungsfeld zwischen Safety und Security.
+\end{itemize}
+
+\subsubsection{Funkbasierte Zugsteuerungsarchitekturen und Systemmodelle}
+\begin{itemize}
+    \item \textbf{Liu et al. (2020) / Xiang Liu et al. -- \textit{Cyber Security Risk Management for Connected Railroads}:}
+    Liu et al. entwickeln im Auftrag der US-amerikanischen Federal Railroad Administration (FRA) eine Risikomanagement-Methodik für vernetzte Zugsicherungssysteme (ATCS, CBTC, PTC) \parencite[S. 1--15]{xiangliuCyber2020}. Sie definieren das generische Komponentenmodell funkbasierter Zugsteuerung (OBU, Balisen, Funkschnittstelle, zentrale Steuerungsrechner) und analysieren Angriffsvektoren wie Eavesdropping und Blue Block Spoofing \parencite[S. 10--15, 46--48]{xiangliuCyber2020}. Das Modell dient in dieser Arbeit als herstellerneutraler Vergleichsrahmen.
+
+    \item \textbf{Iwamoto et al. (2024 / 2025) -- \textit{Train Control System Independent of Communication Transmission Paths}:}
+    Iwamoto et al. beschreiben die Forschungen des japanischen \textit{Railway Technical Research Institute} (RTRI) zur Entkopplung der Sicherheitssteuerung von privaten Übertragungsnetzen (LCX-Kabeln) \parencite[S. 1--5]{iwamotoTrain2024}. Auf Basis der IEC 62280 verlagert das Konzept die Integritätsprüfung vollständig auf die Logikschicht mittels HMAC-SHA256 (256 Bit Sicherheitsstärke), um öffentliche Netze (5G, Wi-Fi) sicher nutzen zu können \parencite[S. 10--12]{iwamotoTrain2024}. Diese Arbeit repräsentiert das modernste japanische Paradigma der trägerunabhängigen Zugsteuerung.
+
+    \item \textbf{Tsukisawa et al. (2024) -- \textit{Standardization of Cybersecurity of Operational Technology Systems on Railways}:}
+    Tsukisawa et al. analysieren die internationale Standardisierung der OT-Cybersecurity im Bahnsektor basierend auf der IEC 62443 und der zukünftigen IEC/TC 9/PT 63452 \parencite[S. 41--43]{h.tsukisawaStandardization2024}. Sie untersuchen die Segmentierung in Sicherheitszonen (\textit{Zones}) und \textit{Conduits} zur Verhinderung unbefugter Datenflüsse in Leit- und Sicherungsanlagen.
+\end{itemize}
+
+\subsubsection{High-Assurance-Architekturen, Angriffserkennung und MTD}
+\begin{itemize}
+    \item \textbf{Schulz et al. (2019) \& Tverdyshev (2019) -- \textit{Integration Approach for CBTC Applications in High Assurance Security Architecture} / \textit{certMILS}:}
+    Schulz et al. und Tverdyshev demonstrieren die Anwendung des MILS-Architekturmusters (\textit{Multiple Independent Levels of Security}) mit zertifizierten Separation Kernels (PikeOS) für Zugsicherungsrechner \parencite[S. 31--35]{schulzIntegration2019}\parencite[S. 80--83]{tverdyshevCertMILS2019}. Die strikte Hardware-Partitionierung schützt die Safety-Logik vor kompromittierten Kommunikationsmodulen und ermöglicht eine kompositionelle Zertifizierung zur Entkopplung unterschiedlicher System-Lebenszyklen \parencite[S. 32--34]{schulzIntegration2019}.
+
+    \item \textbf{Melaragno et al. (2016) -- \textit{Rail Radio Intrusion Detection System (RRIDS) for CBTC}:}
+    Melaragno et al. entwickeln ein bahnspezifisches Angriffserkennungssystem (RRIDS), das Funktelegramme passiv auf Protokollebene überwacht und Anomalien wie Replay-, Guessing- oder Korruptionsangriffe mittels $\mu$TESLA echtzeitnah identifiziert, ohne Latenzen in den Steuerungszirkel einzubringen \parencite[S. 39--48]{melaragnoRail2016}.
+
+    \item \textbf{Poschinger et al. (2020) -- \textit{OpenMTD: A Framework for Efficient Network-Level MTD Evaluation}:}
+    Poschinger et al. evaluieren Moving Target Defense (MTD) wie Port Hopping und IP Address Shuffling auf Netzwerkebene \parencite[S. 66--68, 121]{poschingerOpenMTD2020}. Sie zeigen die Grenzen von MTD im Bahn-Echtzeitbetrieb auf, da dynamische Adressänderungen kritische Latenz- und Synchronisationsrisiken erzeugen können \parencite[S. 121]{poschingerOpenMTD2020}.
+\end{itemize}
+
+\subsubsection{Umfassende Systemliteratur}
+\begin{itemize}
+    \item \textbf{Trinckauf et al. (2024) -- \textit{ETCS in Deutschland} (2. Auflage):}
+    Das Standardwerk von Trinckauf et al. stellt die fachliche Gesamtgrundlage für das europäische Zugsicherungssystem ETCS, die RMR/FRMCS-Kommunikation, Baseline 4, TLS 1.3 sowie die betrieblichen Sicherheitsanforderungen nach RAMS dar \parencite[S. 49, 123, 204--211]{trinckaufETCS2024}.
+\end{itemize}
 
 \subsection{\texorpdfstring{\gls{etcs}-\textit{Level}-Vergleich: Operative, humane und kommunikative Schnittstellen}{ETCS-Level-Vergleich: Operative, humane und kommunikative Schnittstellen}}
 \label{sec:ETCS-Level-Vergleich_Operative_humane_und_kommunikative_Schnittstellen}
