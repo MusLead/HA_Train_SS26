@@ -14,7 +14,6 @@
 \usepackage{url}
 % Makes citations, URLs, table of contents entries and cross-references clickable in the PDF.
 % Use hidelinks for a clean academic style without colored boxes.
-\usepackage[ngerman]{babel}
 \usepackage{hyperref}
 \usepackage[acronym,nonumberlist,section=section]{glossaries}
 % Sortierung durch LaTeX; kein separater makeglossaries-Aufruf erforderlich.
@@ -188,55 +187,19 @@ Das \textit{European Rail Traffic Management System} (\gls{ertms}) definiert das
 
 % TODO add and Research more on this!: Aktuelle Lage! ETCS 3 ist am meisten noch in Testing bereich besonders wichitg für ATO-Entwicklung. Aber dien miesten Länder in Europa nutzt schon Level 1 einige versucht Lvl. 2 zu implementieren (RESEARCH: wo wurde implementiert, welche Bereiche/Strecke!)
 
-% TOO MUCH INFROMATION -- DELETE THIS SUB-CHAPTER --
-% \subsubsection{\texorpdfstring{Der \gls{ertms}-Kommunikationsstapel}{Der ERTMS-Kommunikationsstapel}}
-% \label{sec:Der_ERTMS-Kommunikationsstapel}
-% Die Kommunikation zwischen Zug und Radio Block Centre (RBC) ist in mehrere Protokollschichten gegliedert, die unterschiedliche Aufgaben bei Übertragung und Absicherung der ETCS-Daten übernehmen \parencite[S.744]{chothiaAttack2017}.
-
-% \begin{table}[ht]
-% \centering
-% \caption{Schichten des ERTMS-Kommunikationsstapels}
-% \label{tab:ertms-kommunikationsstapel}
-% \begin{tabularx}{\textwidth}{@{} l l X @{}}
-% \toprule
-% \textbf{Schicht} & \textbf{Technologie} & \textbf{Funktion} \\
-% \midrule
-% Untere Schicht
-% & GSM-R / RMR
-% & Übertragungsinfrastruktur zwischen Fahrzeug und Strecke; Schutz der
-% Funkschnittstelle, z.\,B. durch A5/1 oder A5/3
-% \parencite[S.744, 750]{chothiaAttack2017}. \\
-
-% Mittlere Schicht
-% & EuroRadio
-% & Authentifizierung und Integritätsschutz der ETCS-Daten mittels
-% Message Authentication Codes (MAC)
-% \parencite[S.744, 751]{chothiaAttack2017}. \\
-
-% Anwendungsschicht
-% & ETCS
-% & Verarbeitung betrieblicher Daten wie Movement Authorities und
-% Positionsberichte; Erkennung veralteter oder wiederholter Telegramme
-% durch Zeitstempel und Sequenznummern
-% \parencite[S.744, 754]{chothiaAttack2017}. \\
-% \bottomrule
-% \end{tabularx}
-% \end{table}
-
 \subsubsection{\texorpdfstring{Nachfolgetechnologie \gls{rmr} und \gls{frmcs}}{Nachfolgetechnologie RMR und FRMCS}}
 \label{sec:Nachfolgetechnologie_RMR_und_FRMCS}
-Zur Ablösung der veraltenden \gls{2g}-basierten \gls{gsm-r}-Infrastruktur Spezifiziert die \gls{uic} im Rahmen des \textit{Railway Mobile Radio} (\gls{rmr}) das \textit{Future Railway Mobile Communication System} (\gls{frmcs}) als neuen globalen Mobilfunkstandard~\parencite[S. 49, 123]{trinckaufETCS2024}. Architektonisch basiert \gls{frmcs} auf den \gls{3gpp}-Spezifikationen (ab \textit{Release} 15/16) und führt ein dreischichtiges Architekturmodell ein, welches die Anwendungsschicht (\textit{Application Stratum}), die bahnspezifische Dienstschicht (\textit{Service Stratum} mit \gls{3gpp} \gls{mcx}-Diensten) und die physikalische Übertragungsschicht (\textit{Transport Stratum}) strikt voneinander entkoppelt~\parencite[S. 123]{trinckaufETCS2024}. 
+Zur Ablösung der veraltenden \gls{2g}-basierten \gls{gsm-r}-Infrastruktur spezifiziert die \gls{uic} im Rahmen des \textit{Railway Mobile Radio} (\gls{rmr}) das \textit{Future Railway Mobile Communication System} (\gls{frmcs}) als neuen globalen Mobilfunkstandard~\parencite[S. 49, 123]{trinckaufETCS2024}. Architektonisch basiert \gls{frmcs} auf den \gls{3gpp}-Spezifikationen (ab \textit{Release} 15/16) und führt ein dreischichtiges Architekturmodell ein, welches die Anwendungsschicht (\textit{Application Stratum}), die bahnspezifische Dienstschicht (\textit{Service Stratum} mit \gls{3gpp} \gls{mcx}-Diensten) und die physikalische Übertragungsschicht (\textit{Transport Stratum}) strikt voneinander entkoppelt~\parencite[S. 123]{trinckaufETCS2024}. 
 
 Durch diese funktionale Entkopplung ist das System vollständig trägerunabhängig (\textit{Bearer Independence}): Die bahnbetriebliche Anwendungslogik und deren \textit{Safety}-Zertifikate werden von der zugrundeliegenden Übertragungsinfrastruktur isoliert~\parencite[S. 123, 211]{trinckaufETCS2024}. Dies ermöglicht es, zukünftige Mobilfunkgenerationen (wie \gls{6g}) oder alternative Übertragungsmedien (z. B. öffentliches \gls{5g}, \gls{wi-fi} oder Satellitenkommunikation) flexibel einzubinden, ohne dass die sicherheitskritische Zugsteuerungssoftware des \textit{European Vital Computers} (\gls{evc}) bei jedem Technologie-\textit{Upgrade} neu zertifiziert werden muss~\parencite[S. 123, 211]{trinckaufETCS2024}. Fahrzeugseitig stellt die \textit{Telecom On-Board Architecture} (\gls{toba}) über das \gls{frmcs} \textit{On-Board Gateway} und standardisierte Schnittstellen sicher, dass Funkmodule, Modems und Antennen modular ausgetauscht werden können, ohne die Trennung zwischen \textit{Safety} und \textit{Security} zu verletzen~\parencite[S. 123, 219]{trinckaufETCS2024}.
 
 \subsubsection{\texorpdfstring{Kryptographische Schutzmechanismen und Schlüsselmanagement in \gls{etcs}}{Kryptographische Schutzmechanismen und Schlüsselmanagement in ETCS}}
 \label{sec:Kryptographische_Schutzmechanismen_und_Schlüsselmanagement_in_ETCS}
-
 Bei funkbasierten \gls{etcs}-Verbindungen übernimmt \textit{EuroRadio} die sicherheitsbezogene Absicherung der zwischen Fahrzeug und \gls{rbc} übertragenen \gls{etcs}-Nachrichten. Während \gls{gsm-r} die Funk- und Übertragungsinfrastruktur bereitstellt, schützt \textit{EuroRadio} insbesondere die Authentizität und Integrität der sicherheitskritischen Anwendungsdaten~\parencite[S. 744, 751]{chothiaAttack2017}.
 
 Im traditionellen \textit{EuroRadio}-Protokoll erfolgt dieser Schutz über den \textit{EuroRadio}-\gls{mac}-Algorithmus, eine Modifikation des \gls{iso} 9797-1 \gls{mac}-Algorithmus 3. Dieser berechnet einen 64-Bit-\gls{mac} mittels \gls{cbc}-Verfahren unter Nutzung von \textit{Single}-\gls{des} für die ersten $n-1$ Blöcke und \textit{Triple}-\gls{des} (\gls{3des}) für den finalen Block~\parencite[S. 751]{chothiaAttack2017}. Die Verwaltung der symmetrischen Sitzungsschlüssel (\gls{kmac}) erfolgt über ein hierarchisches \textit{Key Management System} (\gls{kms}) mit streckenseitigen \textit{Key Management Centren} (\gls{kmc})~\parencite[S. 90, 100]{trinckaufETCS2024}.
 
-In neueren \gls{etcs}-Spezifikationen wird die Absicherung der Zug-Strecken-Kommunikation zunehmend auf moderne IP-basierte Sicherheitsmechanismen ausgerichtet. Dabei kommen insbesondere \gls{tls}-basierte Verfahren und eine zertifikatsbasierte \textit{Public Key Infrastructure} (\gls{pki}) zum Einsatz~\parencite[S. 105, 211]{trinckaufETCS2024}.
+In neueren \gls{etcs}-Spezifikationen wird die Absicherung der Zug-Strecken-Kommunikation zunehmend auf moderne \gls{ip}-basierte Sicherheitsmechanismen ausgerichtet. Dabei kommen insbesondere \gls{tls}-basierte Verfahren und eine zertifikatsbasierte \textit{Public Key Infrastructure} (\gls{pki}) zum Einsatz~\parencite[S. 105, 211]{trinckaufETCS2024}.
 
 \subsubsection{\texorpdfstring{Sichere \textit{Software}-Partitionierung: \gls{mils} und \textit{Separation Kernels}}{Sichere Software-Partitionierung: MILS und Separation Kernels}}
 \label{sec:Sichere_Software-Partitionierung_MILS_und_Separation_Kernels}
@@ -335,7 +298,7 @@ Die vorliegende Hausarbeit baut auf einer Reihe zentraler wissenschaftlicher Ver
 \subsubsection{Kryptographische Protokollanalysen und Kommunikationsschwachstellen}
 \begin{itemize}
     \item \textbf{Chothia et al. (2017) -- \textit{An Attack Against Message Authentication in the ERTMS Train to Trackside Communication Protocols}:}
-    Chothia et al. führen eine kryptographische Formalanalyse des ERTMS-Protokollstapels (GSM-R, EuroRadio, ETCS Application Layer) durch \parencite[S. 743--756]{chothiaAttack2017}. Sie weisen nach, dass die EuroRadio-MAC-Konstruktion aufgrund der geringen Blocklänge (64 Bit) und des Einsatzes von Single-DES anfällig für kollisionsbasierte Key-Recovery-Angriffe ist. Dadurch können Angreifer nach dem Beobachten von MAC-Kollisionen gefälschte \textit{Movement Authorities} (z. B. in Paket 72) injizieren \parencite[S. 751--754]{chothiaAttack2017}. Diese Arbeit bildet in der vorliegenden Hausarbeit die empirische Evidenz für die kryptographischen Schwachstellen der europäischen Bestandsinfrastruktur.
+    Chothia et al. untersuchen die kryptographische Absicherung der Zug-Strecken-Kommunikation in \gls{ertms} und zeigen, dass der traditionelle \textit{EuroRadio}-Integritätsschutz trotz vorhandener Authentifizierungsmechanismen kryptographische Schwächen aufweist~\parencite[S. 743--756]{chothiaAttack2017}. Insbesondere ermöglicht die Kombination aus 64-Bit-Blocklänge und \gls{des}-basierter Konstruktion kollisionsbasierte Angriffe, durch die unter bestimmten Voraussetzungen gefälschte sicherheitskritische Nachrichten erzeugt werden können~\parencite[S. 751--754]{chothiaAttack2017}. Für die vorliegende Arbeit ist dieser Befund zentral, weil er zeigt, dass standardisierte Interoperabilität allein keine langfristige kryptographische Sicherheit gewährleistet und die Migration zu moderneren Sicherheitsmechanismen erforderlich macht.
 
     \item \textbf{Gaggero et al. (2024) -- \textit{A Survey on Wireless-Communication Vulnerabilities of ERTMS in the Railway Sector}:}
     Gaggero et al. bieten einen systematischen Survey über drahtlose Kommunikationsschwachstellen im ERTMS-Standard und unterteilen diese in Nahbereichs- (Eurobalise) und Fernfeldverbindungen (GSM-R) \parencite[S. 52--61]{gaggeroSurvey2024}. Sie arbeiten das operative Paradoxon der \textit{Intrinsic Safety} heraus: Da ein Kommunikationsverlust aus Safety-Gründen automatisch einen Zughalt erzwingt, wird das System anfällig für Denial-of-Service- und Jamming-Angriffe \parencite[S. 56--59]{gaggeroSurvey2024}. Ihre Arbeit liefert die grundlegende Taxonomie für das Spannungsfeld zwischen Safety und Security.
@@ -387,7 +350,7 @@ Das Zusammenspiel von \textit{Baselines} und Systemversionen (z. B. \textit{Base
 \label{sec:Sicherheitsarchitektur_Interoperabilität_vs_Betreiberspezifische_Diversität}
 Der Vergleich der europäischen und japanischen Sicherheitsarchitekturen offenbart zwei grundlegend unterschiedliche Designphilosophien:
 
-Europas Stärke liegt in der völkerrechtlich und technisch garantierten Interoperabilität auf Basis der \gls{tsiccs}~\parencite[S. 49]{trinckaufETCS2024}. Der Preis dieser Standardisierung ist jedoch das Verharren von Altsystemen (\textit{Legacy Security}): Da Schnittstellen über Jahrzehnte abwärtskompatibel bleiben müssen, bleiben veraltete Protokolle wie \gls{gsm-r} und \textit{EuroRadio} trotz bekannter Sicherheitsmängel im Netz gebunden (siehe \autoref{sec:Japanische_Eisenbahnarchitektur}). Um dieser Obsoleszenz zu begegnen, adressiert Europa die logische Trennung von Anwendungs- und Übertragungsschicht durch die schrittweise Migration zum \textit{Future Railway Mobile Communication System} (\gls{frmcs}) im Rahmen von \gls{rmr}, das eine trägerunabhängige Kommunikation über \gls{5g}- und \gls{ip}-Netze ermöglicht~\parencite[S. 123, 211]{trinckaufETCS2024}.
+Europas Stärke liegt in der völkerrechtlich und technisch garantierten Interoperabilität auf Basis der \gls{tsiccs}~\parencite[S. 49]{trinckaufETCS2024}. Der Preis dieser Standardisierung ist jedoch das Verharren von Altsystemen (\textit{Legacy Security}): Da Schnittstellen über Jahrzehnte abwärtskompatibel bleiben müssen, bleiben veraltete Protokolle wie \gls{gsm-r} und \textit{EuroRadio} trotz bekannter Sicherheitsmängel im Netz gebunden (siehe \autoref{sec:Kryptographische_Schutzmechanismen_und_Schlüsselmanagement_in_ETCS}). Um dieser Obsoleszenz zu begegnen, adressiert Europa die logische Trennung von Anwendungs- und Übertragungsschicht durch die schrittweise Migration zum \textit{Future Railway Mobile Communication System} (\gls{frmcs}) im Rahmen von \gls{rmr}, das eine trägerunabhängige Kommunikation über \gls{5g}- und \gls{ip}-Netze ermöglicht~\parencite[S. 123, 211]{trinckaufETCS2024}.
 
 In Japan führte die Privatisierung der \gls{jnr} hingegen zu einer ausgeprägten betreiberspezifischen Heterogenität~\parencite[S. 47--49]{yanaseJapanese2011}. Aus \textit{Security}-Perspektive erzeugt diese Struktur ein inhärentes Schutzkonzept durch Systemdiversität (\textit{Security through Diversity}): Wird eine herstellerspezifische Implementierung (z. B. \gls{atacs} bei \gls{jr} \textit{East}) kompromittiert, breitet sich der Angriff nicht automatisch auf andere regionale Betreiber oder das isolierte \textit{Shinkansen}-Netz aus. Der operative Nachteil liegt jedoch in einer immensen Management- und Zertifizierungskomplexität (\textit{Security-Management Complexity}) sowie dem Fehlen skalenbedingter Kostenvorteile beim Hardwarebezug.
 
@@ -395,14 +358,16 @@ Parallel dazu markiert die japanische Forschung zur \textbf{Unabhängigen Zugste
 
 \subsection{\texorpdfstring{Kryptographische Schwachstellen und \gls{mils}-basierte Architekturkapselung}{Kryptographische Schwachstellen und MILS-basierte Architekturkapselung}}
 \label{sec:Kryptographische_Schwachstellen_und_MILS-basierte_Architekturkapselung}
-Die Notwendigkeit einer logischen Entkopplung wird durch die kryptographischen Schwachstellen klassischer Bahnfunkprotokolle untermauert. Der \textit{EuroRadio}-\gls{mac} basiert auf einer modifizierten 64-Bit-\gls{cbc}-Konstruktion aus \textit{Single}-\gls{des} und \textit{Triple}-\gls{des}~\parencite[S. 751]{chothiaAttack2017}. Wie Chothia \textit{et al.} nachweisen, erlaubt die begrenzte Blocklänge kollisionsbasierte Angriffe: Durch das Beobachten von Nachrichtenkollisionen kann ein Angreifer den ersten \gls{des}-Schlüssel ($k_1$) mathematisch gewinnen und anschließend gefälschte \textit{Movement Authorities} (z. B. versteckt im unüberwachten Paket) in den Datenstrom injizieren~\parencite[S. 751--754]{chothiaAttack2017}.
+Die von Chothia et al. nachgewiesenen Schwachstellen des traditionellen \textit{EuroRadio}-Integritätsschutzes verdeutlichen ein grundsätzliches Problem langlebiger Eisenbahnarchitekturen: Sicherheitskritische Steuerungssoftware besitzt wesentlich längere Lebenszyklen als die für ihre Kommunikation eingesetzten kryptographischen Verfahren~\parencite[S. 751--754]{chothiaAttack2017}. Damit entsteht ein strukturelles Spannungsfeld zwischen langfristiger \textit{Safety}-Zertifizierung und der Notwendigkeit, \textit{Security}-Mechanismen regelmäßig an neue Bedrohungen und kryptographische Standards anzupassen.
 
-An dieser Stelle setzt das \gls{mils}-Architekturmuster (\textit{Multiple Independent Levels of Security}) an, um das Gesamtsystem trotz potenzieller Kommunikationsschwachstellen zu schützen (siehe \autoref{sec:Sichere_Software-Partitionierung_MILS_und_Separation_Kernels})~\parencite[S. 31--32]{schulzIntegration2019}:
+Eine Möglichkeit, diesen unterschiedlichen Lebenszyklen architektonisch zu begegnen, ist die Isolation von Kommunikations- und Sicherheitsdiensten von der eigentlichen \textit{Safety}-Logik. Hier setzt das \gls{mils}-Architekturmuster (\textit{Multiple Independent Levels of Security}) an (siehe \autoref{sec:Sichere_Software-Partitionierung_MILS_und_Separation_Kernels})~\parencite[S. 31--32]{schulzIntegration2019}:
 
 \begin{enumerate}
-    \item \textbf{Schutz vor Privilegienerweiterung und Durchgreifen:} Ein zertifizierter \textit{Separation Kernel} unterteilt den Fahrzeugrechner (\gls{evc}) in strikt isolierte \textit{Hardware}-Partitionen. Selbst wenn ein Angreifer Schwachstellen im \gls{gsm-r}-Modem, im Protokollstapel oder bei der Schlüsselverwaltung (\gls{kmc}) ausnutzt, verhindert die \gls{mils}-Isolierung ein Ausbrechen des Angreifers auf die sicherheitskritische Steuerungsebene (\textit{Safety-Logic})~\parencite[S. 32--34]{schulzIntegration2019}~\parencite[S. 80--81]{tverdyshevCertMILS2019}.
-    \item \textbf{Entkopplung der Lebenszyklen:} \gls{mils} ermöglicht eine kompositionelle Zertifizierung. Kryptographische Protokolle oder Funktreiber (mit Lebenszyklen von 2--5 Jahren) können aktualisiert und gepatcht werden, ohne dass der \textit{Safety}-Sicherheitsnachweis der Kernsteuerungssoftware (mit Lebenszyklen von über 20 Jahren) invalidiert wird~\parencite[S. 31, 35]{schulzIntegration2019}~\parencite[S. 83]{tverdyshevCertMILS2019}.
+    \item \textbf{Schutz vor Privilegienerweiterung und Durchgreifen:} Ein zertifizierter \textit{Separation Kernel} unterteilt den Fahrzeugrechner (\gls{evc}) in strikt isolierte \textit{Hardware}-Partitionen. Selbst wenn ein Angreifer Schwachstellen im \gls{gsm-r}-Modem, im Protokollstapel oder bei der Schlüsselverwaltung (\gls{kmc}) ausnutzt, begrenzt die \gls{mils}-Isolierung die Auswirkungen auf die Kommunikationspartition und erschwert ein Durchgreifen auf die sicherheitskritische Steuerungsebene (\textit{Safety-Logic})~\parencite[S. 32--34]{schulzIntegration2019}~\parencite[S. 80--81]{tverdyshevCertMILS2019}.
+    \item \textbf{Entkopplung der Lebenszyklen:} \gls{mils} ermöglicht eine kompositionelle Zertifizierung. Kryptographische Protokolle oder Funktreiber (mit Lebenszyklen von 2--5 Jahren) können aktualisiert und gepatcht werden, ohne dass der \textit{Safety}-Sicherheitsnachweis der Kernsteuerungssoftware (mit Lebenszyklen von über 20 Jahren) vollständig neu geführt werden muss~\parencite[S. 31, 35]{schulzIntegration2019}~\parencite[S. 83]{tverdyshevCertMILS2019}.
 \end{enumerate}
+
+Damit verschiebt sich die Bewertung von der Frage, ob ein einzelnes Kommunikationsprotokoll dauerhaft sicher bleibt, hin zur Frage, wie gut die Gesamtarchitektur den Austausch und die Aktualisierung sicherheitsrelevanter Kommunikationskomponenten zulässt. Dieser Gedanke verbindet die \gls{mils}-basierte Kapselung mit der in \gls{frmcs} angestrebten funktionalen Entkopplung von Anwendung und Übertragungsmedium.
 
 \subsection{\texorpdfstring{\gls{ids}, \gls{mtd} und Redundanzkonzepte}{IDS, MTD und Redundanzkonzepte}}
 \label{sec:IDS_MTD_und_Redundanzkonzepte}
@@ -417,7 +382,7 @@ Bezüglich der \textbf{Verfügbarkeit} zeigen sich deutliche Unterschiede im Red
 
 \subsection{\texorpdfstring{Zukunftsfähige Migrationspfade: \gls{frmcs} und \gls{iec} 62280}{Zukunftsfähige Migrationspfade: FRMCS und IEC 62280}}
 \label{sec:Zukunftsfähige_Migrationspfade_FRMCS_und_IEC_62280}
-Die Überwindung der \gls{gsm-r}-Schwachstellen vollzieht sich in Europa durch die Migration zu \gls{frmcs} im Rahmen von \gls{rmr}~\parencite[S. 49, 123]{trinckaufETCS2024}. \gls{frmcs} eliminiert die Schwachstellen des \textit{EuroRadio}-\gls{mac}s, indem die Datenübertragung auf moderne \gls{tls}-1.3-Verschlüsselung mit \gls{pki}-Zertifikaten umgestellt wird~\parencite[S. 105, 211]{trinckaufETCS2024}. 
+Die Überwindung der \gls{gsm-r}- und \textit{EuroRadio}-bedingten Altlasten vollzieht sich in Europa durch die Migration zu \gls{frmcs} im Rahmen von \gls{rmr}~\parencite[S. 49, 123]{trinckaufETCS2024}. Anstelle einer weiteren Verlängerung bestehender kryptographischer Mechanismen wird die Kommunikation auf moderne, \gls{ip}-basierte Sicherheitsdienste mit \gls{tls} und \gls{pki}-gestützter Authentisierung ausgerichtet~\parencite[S. 105, 211]{trinckaufETCS2024}. Entscheidend ist dabei weniger ein einzelner Algorithmus als die architektonische Fähigkeit, Sicherheitsmechanismen unabhängig von der eigentlichen \gls{etcs}-Anwendungslogik weiterzuentwickeln.
 
 Überdies schützt die in \gls{frmcs} integrierte \textbf{\textit{Multipath}-Funktionalität} (parallele Bündelung von \gls{rmr}-\gls{5g} und öffentlichen Mobilfunknetzen) effektiv vor Breitband-\textit{Jamming} und stellt die erforderliche Bandbreite und Ausfallsicherheit für hochautomatisierten Betrieb (\gls{goa4}) bereit~\parencite[S. 123, 211]{trinckaufETCS2024}. Durch das trägerunabhängige Dreischichtenmodell (\textit{Application, Service, Transport Stratum}) können zukünftige Mobilfunkgenerationen (wie \gls{6g}) eingebunden werden, ohne die zertifizierte \gls{etcs}-Anwendungslogik zu verändern (siehe \autoref{sec:Nachfolgetechnologie_RMR_und_FRMCS}).
 

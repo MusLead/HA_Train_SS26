@@ -3,5 +3,5 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 mkdir -p build
-latexmk -pdf hausarbeit_de.tex
-latexmk -c
+latexmk -pdf hausarbeit_de_edited.tex
+latexmk -c hausarbeit_de_edited.tex
