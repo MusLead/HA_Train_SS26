@@ -4,7 +4,6 @@
 - Refine and analyze with ChatGPT
 
 ## Zusammenfassung
-Reflexionszusammenfassung
 
 Zu Beginn meines Schreibprozesses habe ich zunächst mit NotebookLM festgehalten, welche Inhalte ich in den einzelnen Kapiteln behandeln möchte. Dafür habe ich die grundlegende Struktur der Kapitel selbst vorgegeben und daraus zunächst Textentwürfe beziehungsweise inhaltliche Bausteine entwickelt. Diese habe ich anschließend übernommen, erweitert und teilweise mit ChatGPT sprachlich und strukturell verfeinert.
 
