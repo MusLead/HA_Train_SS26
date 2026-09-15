@@ -2,6 +2,8 @@
 % check again if the text are smooth enough from paragraph or from sub points to another sub points (Check the ChatGPT under "Hausarbeit überarbeiten unerquicklich")
 
 \documentclass[runningheads]{res/llncs}
+%LLNCS set tocdepth to 0; below is a solution to show the Section and subsection
+\setcounter{tocdepth}{3}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -11,10 +13,15 @@
 \usepackage{float}
 \usepackage{tabularx}
 \usepackage{booktabs}
+\usepackage[
+    bookmarks=true,
+    bookmarksopen=true,
+    bookmarksnumbered=true
+]{hyperref}
 \usepackage{url}
 % Makes citations, URLs, table of contents entries and cross-references clickable in the PDF.
 % Use hidelinks for a clean academic style without colored boxes.
-\usepackage{hyperref}
+% \usepackage{hyperref}
 \usepackage[acronym,nonumberlist,section=section]{glossaries}
 % Sortierung durch LaTeX; kein separater makeglossaries-Aufruf erforderlich.
 \makenoidxglossaries
@@ -22,7 +29,10 @@
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 \addbibresource{reference.bib}
 \addbibresource{Train_ITSec.bib}
+
 \begin{document}
+
+\newcommand{\cmt}[1]{}
 % Langformen sind im Text bereits ausgeschrieben; Abkürzungen bleiben kurz und verlinkt.
 \glsunsetall
 
@@ -51,15 +61,16 @@ Die zunehmende Digitalisierung der Eisenbahn erhöht die Bedeutung sicherer Zug-
 
 \section{Einleitung und Hintergrund}
 \label{sec:Einleitung_und_Hintergrund}
-
-Schienennetze bilden eine gesellschaftlich und wirtschaftlich bedeutsame Verkehrsinfrastruktur, deren zuverlässiger Betrieb Personen- und Güterverkehr sowie die öffentliche Sicherheit betrifft~\parencite[S. 4]{xiangliuCyber2020}. Mit zunehmender Digitalisierung hängt der Bahnbetrieb stärker von Informations-, Leit-, Sicherungs- und Kommunikationssystemen ab~\parencite[S. 3–4]{xiangliuCyber2020}. Fahrzeuge, streckenseitige Einrichtungen und betriebliche Zentralen tauschen dabei unter anderem Fahrterlaubnisse, Positions- und Geschwindigkeitsdaten aus, die unmittelbar zur Steuerung und Überwachung von Zugbewegungen dienen~\parencite[S. 88, 106, 163–166]{trinckaufETCS2024}. Störungen oder Manipulationen dieser Systeme können den Betrieb beeinträchtigen und im schlimmsten Fall die Betriebssicherheit gefährden~\parencite[S. 204, 207]{trinckaufETCS2024}. Entsprechend müssen Kommunikationsverbindungen sowohl gegen Fehler als auch gegen gezielte Angriffe geschützt werden~\parencite[S. 204]{trinckaufETCS2024}. 
-
+% ALL CHECKED in this Section Literatur checked! (15.09.2026) 
+Schienennetze bilden eine gesellschaftlich und wirtschaftlich bedeutsame Verkehrsinfrastruktur, deren zuverlässiger Betrieb Personen- und Güterverkehr sowie die öffentliche Sicherheit betrifft.
+% ~\parencite[S. 4]{xiangliuCyber2020}\cmt{OK}. 
+Mit zunehmender Digitalisierung hängt der Bahnbetrieb stärker von Informations-, Leit-, Sicherungs- und Kommunikationssystemen ab~\parencite[S. 3–4]{xiangliuCyber2020}\cmt{OK}. Fahrzeuge, streckenseitige Einrichtungen und betriebliche Zentralen tauschen dabei unter anderem Fahrterlaubnisse, Positions- und Geschwindigkeitsdaten aus, die unmittelbar zur Steuerung und Überwachung von Zugbewegungen dienen~\parencite[S. 88]{trinckaufETCS2024}\cmt{OK}. Störungen oder Manipulationen dieser Systeme können den Betrieb beeinträchtigen und im schlimmsten Fall die Betriebssicherheit gefährden. Entsprechend müssen Kommunikationsverbindungen sowohl gegen Fehler als auch gegen gezielte Angriffe geschützt werden~\parencite[S. 204, 207]{trinckaufETCS2024}\cmt{OK}.
 
 Die bundesweite Störung des \textit{Global System for Mobile Communications – Railway} \gls{gsm-r}, eines speziell für den Eisenbahnbetrieb entwickelten Mobilfunksystems, vom 23. Juni 2026 verdeutlicht diese Abhängigkeit: Nach dem Austausch eines \textit{Switches} verhinderte ein nicht gemeldeter Softwarefehler die automatische Aktivierung des redundanten Systems. Erst nach Ausschluss eines Cyberangriffs wurde nach rund 90 Minuten manuell auf die Rückfallebene umgeschaltet~\cite{dbinfragoUrsacheZugfunkStoerung2026}. Der Vorfall zeigt, dass neben dem Schutz vor Angriffen auch Redundanz, kontrollierte Wartungsprozesse und wirksames Störungsmanagement für die Sicherheit digitaler Bahnsysteme entscheidend sind.
 
 Europa und Japan verfolgen unterschiedliche architektonische Ansätze. In Europa bildet \textit{European Rail Traffic Management System} \gls{ertms} einen interoperablen Rahmen zur Harmonisierung nationaler Signalsysteme und zur Unterstützung des grenzüberschreitenden Eisenbahnbetriebs~\cite{EuropeanCommission_ERTMS_2026}. 
 
-In Japan formulieren nationale Vorgaben überwiegend funktionale und leistungsbezogene Anforderungen, während die Betreiber eigene technische Implementierungsstandards festlegen~\cite{yanaseJapanese2011}. Dadurch können sich Systeme zwischen Betreibern und Strecken unterscheiden; erforderliche Interoperabilität wird über gemeinsame Schnittstellen hergestellt, ohne ein landesweit einheitliches System vorzuschreiben~\cite{MLIT_CBTC_2021}.
+In Japan formulieren nationale Vorgaben überwiegend funktionale und leistungsbezogene Anforderungen, während die Betreiber eigene technische Implementierungsstandards festlegen~\cite{yanaseJapanese2011}. Dadurch können sich Systeme zwischen Betreibern und Strecken unterscheiden; erforderliche Interoperabilität wird über gemeinsame Schnittstellen hergestellt, ohne ein landesweit einheitliches System vorzuschreiben~\cite[S. 2]{MLIT_CBTC_2021}.
 
 Diese Hausarbeit vergleicht ausgewählte europäische und japanische Ansätze der sicherheitskritischen Eisenbahnkommunikation zwischen Zügen und Leitstellen. Die Forschungsfrage lautet: Wie schützen europäische und japanische Eisenbahnsysteme sicherheitskritische Kommunikation zwischen Zügen und Leitstellen, und welche Sicherheitsgrenzen oder Forschungslücken bleiben bestehen? Der Vergleich ist relevant, weil beide Regionen zunehmend digitale, drahtlose und softwaredefinierte Eisenbahnarchitekturen entwickeln, jedoch von unterschiedlichen historischen und technischen Ausgangspunkten ausgehen.
 
@@ -71,16 +82,16 @@ Dieses Kapitel schafft den fachlichen Bezugsrahmen für die anschließende Unter
 \subsection{Sicherheitskritische Eisenbahnkommunikation}
 \label{sec:Sicherheitskritische_Eisenbahnkommunikation}
 
-Sicherheitskritische Eisenbahnkommunikation umfasst die Übertragung von Informationen, die Zugbewegungen oder die betriebliche Sicherheit beeinflussen, etwa \textit{Movement Authorities}, Brems- und Geschwindigkeitsinformationen, Zugpositionsmeldungen oder Notstopp-Nachrichten~\parencite[S. 120--121]{trinckaufETCS2024}. Werden solche Informationen verändert, verzögert, wiederholt oder gefälscht, können Fehlentscheidungen oder restriktive Systemzustände die Folge sein~\parencite[S. 17]{iwamotoTrain2024}. Die Kommunikation ist daher als Bestandteil eines sicherheitskritischen Regelkreises und nicht nur als technischer Datenaustausch zu betrachten.
+Sicherheitskritische Eisenbahnkommunikation umfasst die Übertragung von Informationen, die Zugbewegungen oder die betriebliche Sicherheit beeinflussen, etwa \textit{Movement Authorities}, Brems- und Geschwindigkeitsinformationen, Zugpositionsmeldungen oder Notstopp-Nachrichten~\parencite[S. 166--173]{trinckaufETCS2024}. Werden solche Informationen verändert, verzögert, wiederholt oder gefälscht, können Fehlentscheidungen oder restriktive Systemzustände die Folge sein~\parencite[S. 17]{iwamotoTrain2024} \cmt{I have not read through, because It is in Japanese}. Die Kommunikation ist daher als Bestandteil eines sicherheitskritischen Regelkreises und nicht nur als technischer Datenaustausch zu betrachten.
 
-Für diese Arbeit stehen vier Sicherheitsziele im Vordergrund. \textbf{Vertraulichkeit} schützt Daten vor unberechtigter Offenlegung. \textbf{Integrität} ermöglicht es, unbefugte Veränderungen sicherheitsrelevanter Nachrichten zu erkennen. \textbf{Authentizität} stellt sicher, dass Nachrichten von einem autorisierten Kommunikationspartner wie einem \textit{Radio Block Centre} (\gls{rbc}) oder einer \textit{On-Board-Unit} (\gls{obu}) stammen. \textbf{Verfügbarkeit} verlangt schließlich, dass die Kommunikation mit der für einen sicheren und effizienten Betrieb erforderlichen Zuverlässigkeit bereitsteht~\parencite[S. 207]{trinckaufETCS2024}. Gerade dieses Ziel ist im Bahnbetrieb kritisch, da Kommunikationsverlust im Sinne der \textit{Intrinsic Safety} zu einem restriktiven Zustand bis hin zum Zughalt führen kann~\parencite[S. 56]{gaggeroSurvey2024}.
+Für diese Arbeit stehen vier Sicherheitsziele im Vordergrund. \textbf{Vertraulichkeit} schützt Daten vor unberechtigter Offenlegung. \textbf{Integrität} ermöglicht es, unbefugte Veränderungen sicherheitsrelevanter Nachrichten zu erkennen. \textbf{Authentizität} stellt sicher, dass Nachrichten von einem autorisierten Kommunikationspartner wie einem \textit{Radio Block Centre} (\gls{rbc}) oder einer \textit{On-Board-Unit} (\gls{obu}) stammen. \textbf{Verfügbarkeit} verlangt schließlich, dass die Kommunikation mit der für einen sicheren und effizienten Betrieb erforderlichen Zuverlässigkeit bereitsteht~\parencite[S. 207]{trinckaufETCS2024}. Gerade dieses Ziel ist im Bahnbetrieb kritisch, da Kommunikationsverlust im Sinne der \textit{Intrinsic Safety} zu einem restriktiven Zustand bis hin zum Zughalt führen kann~\parencite[S. 56]{gaggeroSurvey2024} \cmt{until here OK}.
 
-Das Verhältnis zwischen \textit{Safety} und \textit{Security} ist deshalb eng gekoppelt. \textit{Safety} adressiert vor allem zufällige und systematische Fehler, während \textit{Security} zusätzlich absichtliche Manipulationen berücksichtigen muss. Zugleich unterscheiden sich die Lebenszyklen: \textit{Safety}-Anforderungen bleiben häufig langfristig stabil, während \textit{Security}-Maßnahmen wegen neuer Bedrohungen und Technologien kontinuierlich angepasst werden müssen~\parencite[S. 204]{trinckaufETCS2024}. Ein Angriff auf die Kommunikationsverfügbarkeit, etwa durch \textit{Jamming}, kann daher gerade die vorgesehene \textit{Fail-Safe}-Reaktion auslösen und damit einen sicheren, aber betrieblich stark eingeschränkten Zustand erzeugen~\parencite[S. 56, 59]{gaggeroSurvey2024}.
+Das Verhältnis zwischen \textit{Safety} und \textit{Security} ist deshalb eng gekoppelt. \textit{Safety} adressiert vor allem zufällige und systematische Fehler, während \textit{Security} zusätzlich absichtliche Manipulationen berücksichtigen muss. Zugleich unterscheiden sich die Lebenszyklen: \textit{Safety}-Anforderungen bleiben häufig langfristig stabil, während \textit{Security}-Maßnahmen wegen neuer Bedrohungen und Technologien kontinuierlich angepasst werden müssen~\parencite[S. 204]{trinckaufETCS2024}. Ein Angriff auf die Kommunikationsverfügbarkeit, etwa durch \textit{Jamming}, kann daher gerade die vorgesehene \textit{Fail-Safe}-Reaktion auslösen und damit einen sicheren, aber betrieblich stark eingeschränkten Zustand erzeugen~\parencite[S. 56--59]{gaggeroSurvey2024}\cmt{until here OK}.
 
 \subsection{Gemeinsame Komponenten funkbasierter Zugsteuerungssysteme}
 \label{sec:Übersicht_gemeinsamer_Komponenten_funkbasierter_Zugsteuerungssysteme}
 
-Für den späteren Vergleich ist zunächst ein hersteller- und regionenübergreifendes Komponentenmodell erforderlich. Funkbasierte Zugsteuerungssysteme (\textit{Communications-Based Train Control}, \gls{cbtc}) bestehen typischerweise aus fahrzeugseitiger Steuerungslogik, streckenseitigen Referenz- beziehungsweise Übertragungselementen und einer Kommunikationsschnittstelle zwischen Fahrzeug und Strecke~\parencite[S. 9--11]{xiangliuCyber2020}. Abbildung~\ref{fig:Schieneninfrastruktur} veranschaulicht diese grundlegende Aufteilung.
+Für den späteren Vergleich ist zunächst ein hersteller- und regionenübergreifendes Komponentenmodell erforderlich. Funkbasierte Zugsteuerungssysteme (\textit{Communication Based Train Control}, \gls{cbtc}) bestehen typischerweise aus fahrzeugseitiger Steuerungslogik, streckenseitigen Referenz- beziehungsweise Übertragungselementen und einer Kommunikationsschnittstelle zwischen Fahrzeug und Strecke~\parencite[S. 9--11]{xiangliuCyber2020}. Abbildung~\ref{fig:Schieneninfrastruktur} veranschaulicht diese grundlegende Aufteilung.
 
 \begin{figure}[htbp!]
 \centering
@@ -174,7 +185,7 @@ Die japanische Seite wird entlang ihrer institutionellen Heterogenität, der Ent
 
 \subsubsection{Historische Entwicklung und betreiberspezifische Heterogenität}
 \label{sec:Historische_Entwicklung_und_betreiberspezifische_Heterogenität}
-Die Privatisierung der \textit{Japan National Railways} (\gls{jnr}) im Jahr 1987 führte zu mehreren regionalen \gls{jr}-Gesellschaften und weiteren privaten Bahnbetreibern~\parencite[S. 47]{yanaseJapanese2011}. Nationale Vorgaben definieren Mindest- und Funktionsanforderungen, während Betreiber eigene technische Implementierungsstandards festlegen können~\parencite[S. 48--49, 51]{yanaseJapanese2011}. Dadurch entstand eine stärker betreiber- und streckenspezifische Systemlandschaft als im europäischen \gls{ertms}-Rahmen.
+Die Privatisierung der \textit{Japan National Railways} (\gls{jnr}) im Jahr 1987 führte zu mehreren regionalen \gls{jr}-Gesellschaften und weiteren privaten Bahnbetreibern~\parencite{yanaseJapanese2011}. Nationale Vorgaben definieren Mindest- und Funktionsanforderungen, während Betreiber eigene technische Implementierungsstandards festlegen können~\parencite{yanaseJapanese2011}. Dadurch entstand eine stärker betreiber- und streckenspezifische Systemlandschaft als im europäischen \gls{ertms}-Rahmen.
 
 \subsubsection{\texorpdfstring{\gls{atc} und \gls{atacs}}{ATC und ATACS}}
 \label{sec:ATC_und_ATACS}
@@ -206,7 +217,7 @@ Die Quellen werden nach ihrer Funktion im Argument unterschiedlich gewichtet. Te
 \subsection{Vergleichsrahmen und Einschränkungen}
 \label{sec:Vergleichsrahmen_und_Einschränkungen}
 
-Der Vergleich konzentriert sich auf Kommunikationsbeziehungen zwischen Fahrzeugen und streckenseitigen beziehungsweise zentralen Steuerungskomponenten. Betrachtet werden sicherheitsrelevante Informationen wie \textit{Movement Authorities}, Positionsmeldungen, Geschwindigkeitsinformationen und Notstopp-Nachrichten. Für Europa stehen \gls{ertms}, \gls{etcs}, \gls{gsm-r}, \textit{EuroRadio} und die Migration zu \gls{frmcs} im Mittelpunkt. Für Japan werden \gls{d-atc}, \gls{atacs} sowie der veröffentlichte \gls{rtri}-Ansatz zur vom Übertragungsweg unabhängigen Zugsteuerung betrachtet.
+Der Vergleich konzentriert sich auf Kommunikationsbeziehungen zwischen Fahrzeugen und streckenseitigen beziehungsweise zentralen Steuerungskomponenten. Betrachtet werden sicherheitsrelevante Informationen wie \textit{Movement Authorities}, Positionsmeldungen, Geschwindigkeitsinformationen und Notstopp-\linebreak Nachrichten. Für Europa stehen \gls{ertms}, \gls{etcs}, \gls{gsm-r}, \textit{EuroRadio} und die Migration zu \gls{frmcs} im Mittelpunkt. Für Japan werden \gls{d-atc}, \gls{atacs} sowie der veröffentlichte \gls{rtri}-Ansatz zur vom Übertragungsweg unabhängigen Zugsteuerung betrachtet.
 
 Die Analyse beruht ausschließlich auf öffentlich zugänglicher Literatur und ist daher kein empirischer Sicherheitstest konkreter Netze. Nicht betrachtet werden Fahrgast-\gls{wlan}, Fahrgastinformation, \textit{Ticketing} oder allgemeine Unternehmens-\gls{it}. Außerdem ist die Vergleichbarkeit dadurch begrenzt, dass auf europäischer Seite produktive Bestands- und Migrationssysteme, auf japanischer Seite teilweise betreiberspezifische Systeme und teilweise Forschungsansätze gegenübergestellt werden. Ergebnisse werden deshalb als architektonische Tendenzen und nicht als flächendeckende Aussagen über alle europäischen oder japanischen Bahnen interpretiert.
 
@@ -248,9 +259,9 @@ Trinckauf et al. liefern mit \textit{ETCS in Deutschland} die technische Gesamtg
 
 \subsection{Sicherheitsarchitektur: Interoperabilität \textit{vs.} betreiberspezifische Diversität}
 \label{sec:Sicherheitsarchitektur_Interoperabilität_vs_Betreiberspezifische_Diversität}
-Europas zentrale Stärke ist der gemeinsame interoperable Rahmen von \gls{ertms}/\gls{etcs}~\parencite[S. 49]{trinckaufETCS2024}. Einheitliche Schnittstellen vereinfachen grenzüberschreitenden Betrieb, gemeinsame Zertifizierung und langfristig auch koordinierte Migrationen. Dieselbe Vereinheitlichung erzeugt jedoch eine gemeinsame Abhängigkeit: Wenn ein weit verbreitetes Protokoll oder eine gemeinsame Netzkomponente eine Schwachstelle besitzt, kann diese einen großen Teil der interoperablen Systemlandschaft betreffen. Die Herausforderung besteht daher nicht in der Standardisierung selbst, sondern darin, Standards so zu gestalten, dass kryptographische und kommunikative Komponenten ohne jahrzehntelange Bindung an veraltete Verfahren austauschbar bleiben.
+Europas zentrale Stärke ist der gemeinsame interoperable Rahmen von \gls{ertms}/\linebreak \gls{etcs}~\parencite[S. 49]{trinckaufETCS2024}. Einheitliche Schnittstellen vereinfachen grenzüberschreitenden Betrieb, gemeinsame Zertifizierung und langfristig auch koordinierte Migrationen. Dieselbe Vereinheitlichung erzeugt jedoch eine gemeinsame Abhängigkeit: Wenn ein weit verbreitetes Protokoll oder eine gemeinsame Netzkomponente eine Schwachstelle besitzt, kann diese einen großen Teil der interoperablen Systemlandschaft betreffen. Die Herausforderung besteht daher nicht in der Standardisierung selbst, sondern darin, Standards so zu gestalten, dass kryptographische und kommunikative Komponenten ohne jahrzehntelange Bindung an veraltete Verfahren austauschbar bleiben.
 
-Die japanische Heterogenität ist dagegen nicht automatisch als \textit{Security through Diversity} zu bewerten. Unterschiedliche Betreiber- und Herstellerlösungen können zwar die Reichweite eines einzelnen implementierungsspezifischen Fehlers begrenzen; daraus folgt jedoch kein inhärenter Sicherheitsvorteil. Heterogenität erschwert zugleich einheitliche Sicherheitsbewertungen, Patch-Prozesse, Personalqualifikation und interoperable Migrationen~\parencite[S. 47--49]{yanaseJapanese2011}. Die belastbarere Schlussfolgerung lautet deshalb: Diversität kann gemeinsame Fehlerdomänen verkleinern, erhöht aber die organisatorische und technische Sicherheitskomplexität.
+Die japanische Heterogenität ist dagegen nicht automatisch als \textit{Security through Diversity} zu bewerten. Unterschiedliche Betreiber- und Herstellerlösungen können zwar die Reichweite eines einzelnen implementierungsspezifischen Fehlers begrenzen; daraus folgt jedoch kein inhärenter Sicherheitsvorteil. Heterogenität erschwert zugleich einheitliche Sicherheitsbewertungen, Patch-Prozesse, Personalqualifikation und interoperable Migrationen~\parencite{yanaseJapanese2011}. Die belastbarere Schlussfolgerung lautet deshalb: Diversität kann gemeinsame Fehlerdomänen verkleinern, erhöht aber die organisatorische und technische Sicherheitskomplexität.
 
 Damit ergibt sich ein Zielkonflikt. Europa muss verhindern, dass Interoperabilität zu starrer technischer Homogenität wird; Japan muss verhindern, dass technische Autonomie zu fragmentiertem Sicherheitsmanagement führt. Beide Probleme sprechen für klar definierte Schnittstellen bei gleichzeitig austauschbaren Sicherheits- und Kommunikationskomponenten.
 
