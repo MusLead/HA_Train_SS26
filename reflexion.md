@@ -21,7 +21,7 @@ Aus diesem Grund wurde die Arbeit bis zum 14.09.2026 erneut umfassend umstruktur
 
 Am 15.09.2026 wurde die Arbeit erneut vollständig überprüft. Der Schwerpunkt lag dabei insbesondere auf der Kontrolle der verwendeten Quellen und darauf, ob die jeweiligen Aussagen tatsächlich durch die angegebenen Quellen unterstützt werden.
 
-Durch diese Überarbeitungen entwickelte sich die Arbeit von einer überwiegend technischen Beschreibung der europäischen und japanischen Systeme zu einer stärker analytischen Literaturarbeit. Die aktuelle Fassung unterscheidet deutlicher zwischen technischen Grundlagen, Ergebnissen bestehender Forschung, Grenzen der verfügbaren Evidenz sowie der daraus entwickelten vergleichenden Diskussion.
+Durch diese Überarbeitungen wurden einige technische Details bewusst weniger ausführlich dargestellt, damit der Schwerpunkt stärker auf der Diskussion und vergleichenden Einordnung liegt. Dabei wird teilweise vorausgesetzt, dass interessierte Leserinnen und Leser die jeweils zitierten Quellen für weiterführende technische Einzelheiten heranziehen. Die Argumentation konzentriert sich daher vor allem darauf, die in der Literatur beschriebenen Ansätze, Annahmen und Sicherheitsmechanismen vergleichend zu bewerten und ihre möglichen Auswirkungen auf die Kommunikationssicherheit einzuordnen.
 
 ---
 
