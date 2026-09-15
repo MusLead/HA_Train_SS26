@@ -91,12 +91,12 @@ Das Verhältnis zwischen \textit{Safety} und \textit{Security} ist deshalb eng g
 \subsection{Gemeinsame Komponenten funkbasierter Zugsteuerungssysteme}
 \label{sec:Übersicht_gemeinsamer_Komponenten_funkbasierter_Zugsteuerungssysteme}
 
-Für den späteren Vergleich ist zunächst ein hersteller- und regionenübergreifendes Komponentenmodell erforderlich. Funkbasierte Zugsteuerungssysteme (\textit{Communication Based Train Control}, \gls{cbtc}) bestehen typischerweise aus fahrzeugseitiger Steuerungslogik, streckenseitigen Referenz- beziehungsweise Übertragungselementen und einer Kommunikationsschnittstelle zwischen Fahrzeug und Strecke~\parencite[S. 9--11]{xiangliuCyber2020}. Abbildung~\ref{fig:Schieneninfrastruktur} veranschaulicht diese grundlegende Aufteilung.
+Für den späteren Vergleich ist zunächst ein hersteller- und regionenübergreifendes Komponentenmodell erforderlich. Funkbasierte Zugsteuerungssysteme (\textit{Communication Based Train Control}, \gls{cbtc}) bestehen typischerweise aus fahrzeugseitiger Steuerungslogik, streckenseitigen Referenz- beziehungsweise Übertragungselementen und einer Kommunikationsschnittstelle zwischen Fahrzeug und Strecke~\parencite[S. 9--14]{xiangliuCyber2020}\cmt{OK}. Abbildung~\ref{fig:Schieneninfrastruktur} veranschaulicht diese grundlegende Aufteilung.
 
-\begin{figure}[htbp!]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{res/Bahn_Infrastruktur.jpg}
-\caption{Überblick über die Schieneninfrastruktur~\cite{xiangliuCyber2020}}
+\includegraphics[width=0.675\textwidth]{res/Bahn_Infrastruktur.jpg}
+\caption{Überblick über die Schieneninfrastruktur~\parencite[S. 14]{xiangliuCyber2020}}
 \label{fig:Schieneninfrastruktur}
 \end{figure}
 
@@ -104,7 +104,7 @@ Für den späteren Vergleich ist zunächst ein hersteller- und regionenübergrei
     \item \textbf{Fahrzeugseitige Steuerungseinheit:} Eine \gls{obu}, ein \gls{evc} oder ein vergleichbarer Sicherheitsrechner verarbeitet Zugposition, Geschwindigkeit und Fahrterlaubnisse und überwacht daraus abgeleitete Bremskurven~\parencite[S. 10]{xiangliuCyber2020}~\parencite[S. 101--104]{trinckaufETCS2024}.
     \item \textbf{Streckenseitige Referenz- und Übertragungselemente:} Balisen oder andere \textit{Transponder} übertragen punktförmig Streckeninformationen und unterstützen die Positionsreferenzierung~\parencite[S. 10--11]{xiangliuCyber2020}~\parencite[S. 75--76]{trinckaufETCS2024}.
     \item \textbf{Kommunikationsschnittstelle:} Eine bidirektionale Funk- oder Kabelverbindung transportiert sicherheitsrelevante Informationen wie Positionsberichte und Fahrterlaubnisse. Je nach System kommen unter anderem \gls{gsm-r}, \gls{tdma}-Funk oder \textit{Leaky-Coaxial}-Kabel (\gls{lcx}) zum Einsatz~\parencite[S. 9--14]{xiangliuCyber2020}.
-\end{itemize}
+\end{itemize}\cmt{source checked until here -fast-forwarded}
 
 Diese gemeinsamen Komponenten bilden den Vergleichsrahmen; konkrete Schutzmechanismen wie Angriffserkennung, Segmentierung oder dynamische Netzwerkverfahren werden erst in der Diskussion hinsichtlich ihres Beitrags und ihrer Grenzen bewertet.
 
@@ -115,7 +115,7 @@ Für Europa werden vier Aspekte betrachtet: zunächst die funktionale Struktur d
 
 \subsubsection{Struktur und Funktionsweise}
 \label{sec:Struktur_und_Funktionsweise}
-Das \textit{European Rail Traffic Management System} (\gls{ertms}) definiert das \textit{European Train Control System} (\gls{etcs}) als einheitliches europäisches Zugsicherungssystem~\parencite[S. 49]{trinckaufETCS2024}. Die Interaktion zwischen Zug und Streckenausrüstung wird über \textit{Level} strukturiert:
+Das \textit{European Rail Traffic Management System} (\gls{ertms}) definiert das \textit{European Train Control System} (\gls{etcs}) als einheitliches europäisches Zugsicherungssystem~\parencite[S. 58]{trinckaufETCS2024}. Die Interaktion zwischen Zug und Streckenausrüstung wird über \textit{Level} strukturiert:
 
 % \begin{figure}[htbp!]
 %     \centering
@@ -140,48 +140,52 @@ Das \textit{European Rail Traffic Management System} (\gls{ertms}) definiert das
     
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{res/ECTS_Level1.jpg}
+    \includegraphics[width=0.675\textwidth]{res/ECTS_Level1.jpg}
     \caption{\gls{etcs} \textit{Level} 1~\cite{sansculotteETCSLevel1}}
     \label{fig:ETCS-level-1}
     \end{figure}
     
-    \item \textbf{\gls{etcs} \textit{Level} 1:} Fahrterlaubnisse werden punktförmig über Eurobalisen an das Fahrzeug übertragen; die Streckeneinteilung beruht weiterhin auf festen Blockabschnitten~\parencite[S. 50, 71]{trinckaufETCS2024}.
+    \item \textbf{\gls{etcs} \textit{Level} 1:} Fahrterlaubnisse werden punktförmig über Eurobalisen an das Fahrzeug übertragen; die Streckeneinteilung beruht weiterhin auf festen Blockabschnitten~\parencite[S. 62--64]{trinckaufETCS2024}.
     
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{res/ECTS_Level2.jpg}
+    \includegraphics[width=0.675\textwidth]{res/ECTS_Level2.jpg}
     \caption{\gls{etcs} \textit{Level} 2~\cite{arcETCS}}
     \label{fig:ETCS-level-2}
     \end{figure}
     
-    \item \textbf{\gls{etcs} \textit{Level} 2:} Zwischen Fahrzeug und \gls{rbc} besteht eine kontinuierliche Funkverbindung. Das \gls{rbc} verarbeitet Stellwerksinformationen und Positionsberichte und übermittelt daraus erzeugte \textit{Movement Authorities}; ortsfeste Signale sind technisch nicht mehr zwingend erforderlich~\parencite[S. 71, 89--90]{trinckaufETCS2024}.
+    \item \textbf{\gls{etcs} \textit{Level} 2:} Zwischen Fahrzeug und \gls{rbc} besteht eine kontinuierliche Funkverbindung. Das \gls{rbc} verarbeitet Stellwerksinformationen und Positionsberichte und übermittelt daraus erzeugte \textit{Movement Authorities}; ortsfeste Signale sind technisch nicht mehr zwingend erforderlich~\parencite[S. 64--65]{trinckaufETCS2024}.
     
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{res/ECTS_Level3.jpg}
+    \includegraphics[width=0.675\textwidth]{res/ECTS_Level3.jpg}
     \caption{\gls{etcs} \textit{Level} 3~\cite{arcETCS}}
     \label{fig:ETCS-level-3}
     \end{figure}
 
-    \item \textbf{\gls{etcs} \textit{Level} 3:} Die Zugvollständigkeit wird fahrzeugseitig überwacht, wodurch gleisseitige Freimeldung reduziert und ein \textit{Moving Block} ermöglicht werden kann~\parencite[S. 471--472]{trinckaufETCS2024}.
-\end{itemize}
+    \item \textbf{\gls{etcs} \textit{Level} 3:} Die Zugvollständigkeit wird fahrzeugseitig überwacht, wodurch gleisseitige Freimeldung reduziert und ein \textit{Moving Block} ermöglicht werden kann~\parencite[S. 65--66]{trinckaufETCS2024}.
+\end{itemize}\cmt{source checked and changed until here -fast-forwarded}
 
 \subsubsection{\texorpdfstring{Nachfolgetechnologie \gls{rmr} und \gls{frmcs}}{Nachfolgetechnologie RMR und FRMCS}}
 \label{sec:Nachfolgetechnologie_RMR_und_FRMCS}
-Zur Ablösung der \gls{2g}-basierten \gls{gsm-r}-Infrastruktur wird im Rahmen von \textit{Railway Mobile Radio} (\gls{rmr}) das \textit{Future Railway Mobile Communication System} (\gls{frmcs}) entwickelt~\parencite[S. 49, 123]{trinckaufETCS2024}. Zentral ist die funktionale Trennung von Anwendung, bahnspezifischen Diensten und Übertragungsschicht. Diese \textit{Bearer Independence} soll es ermöglichen, Übertragungstechnologien weiterzuentwickeln, ohne die sicherheitskritische Anwendungslogik bei jedem Wechsel grundlegend neu zu gestalten~\parencite[S. 123, 211]{trinckaufETCS2024}. Fahrzeugseitig unterstützt die \textit{Telecom On-Board Architecture} (\gls{toba}) diese Modularisierung über standardisierte Schnittstellen~\parencite[S. 123, 219]{trinckaufETCS2024}.
+Zur Ablösung der \gls{2g}-basierten \gls{gsm-r}-Infrastruktur wird im Rahmen von \textit{Railway Mobile Radio} (\gls{rmr}) das \textit{Future Railway Mobile Communication System} (\gls{frmcs}) entwickelt.
+%~\parencite[S. 49, 123]{trinckaufETCS2024}. 
+Zentral ist die funktionale Trennung von Anwendung, bahnspezifischen Diensten und Übertragungsschicht. Diese Trägerflexibilität soll es ermöglichen, Übertragungstechnologien weiterzuentwickeln, ohne die sicherheitskritische Anwendungslogik bei jedem Wechsel grundlegend neu zu gestalten.
+%~\parencite[S. 123, 211]{trinckaufETCS2024}
+Fahrzeugseitig unterstützt die \textit{Telecom On-Board Architecture} (\gls{toba}) diese Modularisierung über standardisierte Schnittstellen~\parencite[S. 125--137]{trinckaufETCS2024}.\cmt{source adjusted until here}
 
 \subsubsection{\texorpdfstring{Kryptographische Schutzmechanismen und Schlüsselmanagement in \gls{etcs}}{Kryptographische Schutzmechanismen und Schlüsselmanagement in ETCS}}
 \label{sec:Kryptographische_Schutzmechanismen_und_Schlüsselmanagement_in_ETCS}
-Bei funkbasierten \gls{etcs}-Verbindungen schützt \textit{EuroRadio} insbesondere Authentizität und Integrität der zwischen Fahrzeug und \gls{rbc} übertragenen Anwendungsdaten, während \gls{gsm-r} die Übertragungsinfrastruktur bereitstellt~\parencite[S. 744, 751]{chothiaAttack2017}. Der traditionelle \textit{EuroRadio}-Schutz nutzt einen \gls{mac} auf Basis von \gls{iso} 9797-1 mit \gls{des}/\gls{3des}; die symmetrischen Schlüssel werden über ein hierarchisches \textit{Key Management System} verwaltet~\parencite[S. 751]{chothiaAttack2017}~\parencite[S. 90, 100]{trinckaufETCS2024}. Neuere Spezifikationen richten die Kommunikation stärker auf \gls{ip}-basierte Sicherheitsmechanismen mit \gls{tls} und zertifikatsbasierter \gls{pki} aus~\parencite[S. 105, 211]{trinckaufETCS2024}.
+Bei funkbasierten \gls{etcs}-Verbindungen schützt \textit{EuroRadio} insbesondere Authentizität und Integrität der zwischen Fahrzeug und \gls{rbc} übertragenen Anwendungsdaten, während \gls{gsm-r} die Übertragungsinfrastruktur bereitstellt~\cite{chothiaAttack2017}. Der traditionelle \textit{EuroRadio}-Schutz nutzt einen \gls{mac} auf Basis von \gls{iso} 9797-1 mit \gls{des}/\gls{3des}; die symmetrischen Schlüssel werden über ein hierarchisches \textit{Key Management System} verwaltet~\cite{chothiaAttack2017}. Neuere Spezifikationen richten die Kommunikation stärker auf \gls{ip}-basierte Sicherheitsmechanismen mit \gls{tls} und zertifikatsbasierter \gls{pki} aus~\parencite[S. 210--212]{trinckaufETCS2024}.
 
 \subsubsection{\texorpdfstring{Sichere \textit{Software}-Partitionierung: \gls{mils} und \textit{Separation Kernels}}{Sichere Software-Partitionierung: MILS und Separation Kernels}}
 \label{sec:Sichere_Software-Partitionierung_MILS_und_Separation_Kernels}
-Da \textit{Safety}-Anwendungen und \textit{Security}-Komponenten unterschiedliche Lebenszyklen besitzen, werden in High-Assurance-Architekturen Partitionierungsansätze wie \gls{mils} untersucht. Ein zertifizierter \textit{Separation Kernel} trennt sicherheitskritische Steuerungslogik von Kommunikations- und Sicherheitsdiensten, sodass Änderungen an einer Partition nicht zwangsläufig den gesamten Sicherheitsnachweis betreffen~\parencite[S. 31--35]{schulzIntegration2019}~\parencite[S. 80--83]{tverdyshevCertMILS2019}. Für ortsfeste Leit- und Sicherungstechnik ergänzt \gls{iec} 62443 diesen Ansatz durch \textit{Zones} und \textit{Conduits}, die Kommunikationsbeziehungen segmentieren und kontrollieren~\parencite[S. 33]{schulzIntegration2019}~\parencite[S. 43]{h.tsukisawaStandardization2024}.
+Da \textit{Safety}-Anwendungen und \textit{Security}-Komponenten unterschiedliche Lebenszyklen besitzen, werden in High-Assurance-Architekturen Partitionierungsansätze wie \gls{mils} untersucht. Ein zertifizierter \textit{Separation Kernel} trennt sicherheitskritische Steuerungslogik von Kommunikations- und Sicherheitsdiensten, sodass Änderungen an einer Partition nicht zwangsläufig den gesamten Sicherheitsnachweis betreffen. Für ortsfeste Leit- und Sicherungstechnik ergänzt \gls{iec} 62443 diesen Ansatz durch \textit{Zones} und \textit{Conduits}, die Kommunikationsbeziehungen segmentieren und kontrollieren~\cite{schulzIntegration2019}~\cite{tverdyshevCertMILS2019}.\cmt{source adjusted until here}
 
 \subsection{Japanische Eisenbahnarchitektur}
 \label{sec:Japanische_Eisenbahnarchitektur}
 
-Die japanische Seite wird entlang ihrer institutionellen Heterogenität, der Entwicklung von \gls{atc} zu funkbasierten Systemen, dem aktuellen \gls{rtri}-Ansatz zur vom Übertragungsweg unabhängigen Zugsteuerung und der dort eingesetzten kryptographischen Absicherung betrachtet. Im Unterschied zum europäischen Standardisierungsrahmen ist dabei zwischen Betreiberpraxis und veröffentlichten Forschungsansätzen zu unterscheiden.
+Die japanische Seite wird entlang ihrer institutionellen Heterogenität, der Entwicklung von \gls{atc} zu funkbasierten Systemen, dem aktuellen \textit{Railway Technical Research Institute} (\gls{rtri})-Ansatz zur vom Übertragungsweg unabhängigen Zugsteuerung und der dort eingesetzten kryptographischen Absicherung betrachtet. Im Unterschied zum europäischen Standardisierungsrahmen ist dabei zwischen Betreiberpraxis und veröffentlichten Forschungsansätzen zu unterscheiden.
 
 \subsubsection{Historische Entwicklung und betreiberspezifische Heterogenität}
 \label{sec:Historische_Entwicklung_und_betreiberspezifische_Heterogenität}
@@ -189,16 +193,21 @@ Die Privatisierung der \textit{Japan National Railways} (\gls{jnr}) im Jahr 1987
 
 \subsubsection{\texorpdfstring{\gls{atc} und \gls{atacs}}{ATC und ATACS}}
 \label{sec:ATC_und_ATACS}
-\textit{Digital} \gls{atc} (\gls{d-atc}) überträgt digitale Informationen über codierte Schienenstromkreise, während die fahrzeugseitige Einheit daraus Bremskurven berechnet~\parencite[S. 44--45]{h.tsukisawaStandardization2024}. \gls{atacs} ist demgegenüber ein von \gls{jr} \textit{East} entwickeltes funkbasiertes Zugsteuerungssystem. Das Fahrzeug bestimmt seine Position unter anderem mit Radsensoren und Transpondern und übermittelt sie über \gls{tdma}-Funk beziehungsweise \gls{lcx}; auf dieser Grundlage werden dynamische Fahr- und Bremsinformationen erzeugt~\parencite[S. 13--14]{xiangliuCyber2020}~\parencite[S. 6, 8]{iwamotoTrain2024}.
+\textit{Digital Automatic Train Control} (\gls{d-atc}) überträgt digitale Informationen über codierte Schienenstromkreise, während die fahrzeugseitige Einheit daraus Bremskurven berechnet~\cite{h.tsukisawaStandardization2024}. \textit{Automatic Train Alert and Control System} (\gls{atacs}) ist demgegenüber ein von \gls{jr} \textit{East} entwickeltes funkbasiertes Zugsteuerungssystem. Das Fahrzeug bestimmt seine Position unter anderem mit Radsensoren und Transpondern und übermittelt sie über \gls{tdma}-Funk beziehungsweise \gls{lcx}; auf dieser Grundlage werden dynamische Fahr- und Bremsinformationen erzeugt~\parencite[S. 13--14]{xiangliuCyber2020}.
+% ~\parencite{iwamotoTrain2024}. % please set the right pages to support this argument! 
+\cmt{source adjusted until here}
 
 \subsubsection{\texorpdfstring{Unabhängige Zugsteuerung und \gls{iec} 62280}{Unabhängige Zugsteuerung und IEC 62280}}
 \label{sec:Unabhängige_Zugsteuerung_und_IEC_62280}
-Aktuelle Arbeiten des \textit{Railway Technical Research Institute} (\gls{rtri}) untersuchen ein \textit{Train Control System Independent of Communication Transmission Paths}~\parencite[S. 1--3]{iwamotoTrain2024}. Das Konzept trennt Sicherheitssteuerung und Informationsübertragung und behandelt den Übertragungsweg entsprechend den Bedrohungskategorien der \gls{iec} 62280 als potenziell unzuverlässig~\parencite[S. 1, 4, 7]{iwamotoTrain2024}. Fahrterlaubnisse werden nur bei positiv bestätigten Daten erteilt; für Notstopps wird dagegen das Ausbleiben zyklischer Nachrichten als Gefahr interpretiert~\parencite[S. 10--12]{iwamotoTrain2024}. Dadurch können prinzipiell auch öffentliche Netze wie \gls{5g} oder \gls{wi-fi} als Transportmedium einbezogen werden, sofern die sicherheitsrelevante Logik ihre Annahmen unabhängig davon durchsetzt~\parencite[S. 3, 10]{iwamotoTrain2024}.
+Aktuelle Arbeiten des \textit{Railway Technical Research Institute} (\gls{rtri}) untersuchen ein \textit{Train Control System Independent of Communication Transmission Paths}\cmt{~\parencite[S. 1--3]{iwamotoTrain2024}}. Das Konzept trennt Sicherheitssteuerung und Informationsübertragung und behandelt den Übertragungsweg entsprechend den Bedrohungskategorien der \gls{iec} 62280 als potenziell unzuverlässig. Fahrterlaubnisse werden nur bei positiv bestätigten Daten erteilt; für Notstopps wird dagegen das Ausbleiben zyklischer Nachrichten als Gefahr interpretiert. Dadurch können prinzipiell auch öffentliche Netze wie \gls{5g} oder \gls{wi-fi} als Transportmedium einbezogen werden, sofern die sicherheitsrelevante Logik ihre Annahmen unabhängig davon durchsetzt~\parencite{iwamotoTrain2024}. \cmt{this subsubsection I have not gone through the pages. since I do not have much time, the pages are removed.}
 
 \subsubsection{Kryptographische Absicherung in Japan}
 \label{sec:Kryptographische_Absicherung_in_Japan}
-Im untersuchten \gls{rtri}-Ansatz wird zur Authentisierung und Fälschungserkennung ein \textit{Hash-based Message Authentication Code} auf Basis von \gls{sha-256} (\gls{hmac-sha256}) eingesetzt~\parencite[S. 12]{iwamotoTrain2024}. Konkrete Details zur Schlüsselverwaltung und zu operativen Sicherheitskonfigurationen einzelner japanischer Betreiber sind in öffentlich zugänglichen Quellen jedoch nur eingeschränkt dokumentiert. Diese Evidenzlücke muss beim späteren Vergleich ausdrücklich berücksichtigt werden.
+Im Rahmen des \gls{rtri}-Ansatzes wird zur Fälschungssicherung 
+%(なりすまし) % Text type -- Hiragana -- Somehow not supported!
+ein \textit{Hash-based Message Authentication Code} auf Basis von \gls{sha-256} (\textbf{\gls{hmac-sha256}}) eingesetzt. Gemäß den \gls{cryptrec}-Standards bietet \gls{hmac-sha256} eine kryptographische Sicherheitsstärke von 256 Bit, die bis mindestens zum Jahr 2070 als mathematisch robust eingestuft wird~\parencite[S. 19--20]{iwamotoTrain2024}. 
 
+% Da japanische Bahnbetreiber als private Unternehmen agieren, sind konkrete Details zur Schlüsselverwaltung (\textit{Key Management}) sowie zu den operativen Schnittstellen des Kryptomoduls in öffentlich zugänglichen wissenschaftlichen Quellen nicht im Detail dokumentiert % NO EXPLANATION ANYWHERE EVEN IN THE IWAMOTO ARTICLE
 \section{Methodik}
 \label{sec:Methodik}
 
@@ -246,20 +255,20 @@ Dieses Kapitel wendet die in Kapitel~\ref{sec:Methodik} definierten Kriterien au
 Die vorliegende Arbeit verbindet Forschungsstränge, die in der Literatur überwiegend getrennt behandelt werden: kryptographische Protokollanalysen, generische Modelle funkbasierter Zugsteuerung, High-Assurance-Architekturen sowie Standardisierung und Migrationskonzepte. Der eigene Beitrag besteht nicht in einem neuen Protokoll, sondern in der vergleichenden Einordnung dieser Befunde für Europa und Japan.
 
 \subsubsection{Kryptographische Protokollanalysen und Kommunikationsschwachstellen}
-Chothia et al. zeigen, dass der traditionelle \textit{EuroRadio}-Integritätsschutz aufgrund seiner \gls{des}-basierten Konstruktion kryptographische Schwächen besitzt und unter bestimmten Voraussetzungen gefälschte Nachrichten ermöglicht~\parencite[S. 743--756]{chothiaAttack2017}. Gaggero et al. erweitern die Perspektive auf drahtlose Schwachstellen von \gls{ertms} und betonen insbesondere das Verfügbarkeitsproblem: Ein Kommunikationsverlust führt aus \textit{Safety}-Gründen zu einem restriktiven Zustand und kann dadurch für \textit{Denial-of-Service}-Angriffe ausgenutzt werden~\parencite[S. 52--61]{gaggeroSurvey2024}. Diese Arbeiten liefern damit die Grundlage für die Bewertung von Integrität und Verfügbarkeit, vergleichen jedoch keine europäischen und japanischen Migrationsansätze.
+~\cite{chothiaAttack2017} zeigen, dass der traditionelle \textit{EuroRadio}-Integritätsschutz aufgrund seiner \gls{des}-basierten Konstruktion kryptographische Schwächen besitzt und unter bestimmten Voraussetzungen gefälschte Nachrichten ermöglicht.~\cite{gaggeroSurvey2024} erweitern die Perspektive auf drahtlose Schwachstellen von \gls{ertms} und betonen insbesondere das Verfügbarkeitsproblem: Ein Kommunikationsverlust führt aus \textit{Safety}-Gründen zu einem restriktiven Zustand und kann dadurch für \textit{Denial-of-Service}-Angriffe ausgenutzt werden. Diese Arbeiten liefern damit die Grundlage für die Bewertung von Integrität und Verfügbarkeit, vergleichen jedoch keine europäischen und japanischen Migrationsansätze.
 
 \subsubsection{Funkbasierte Zugsteuerungsarchitekturen und Systemmodelle}
-Liu et al. stellen ein herstellerneutrales Komponenten- und Risikomodell für vernetzte Zugsteuerungssysteme bereit, das in dieser Arbeit als gemeinsamer technischer Bezugsrahmen dient~\parencite[S. 1--15]{xiangliuCyber2020}. Iwamoto et al. beschreiben dagegen mit der vom Übertragungsweg unabhängigen Zugsteuerung einen spezifischen japanischen Forschungsansatz, der die Sicherheitslogik vom Transportmedium entkoppelt~\parencite[S. 1--12]{iwamotoTrain2024}. Tsukisawa et al. ergänzen diese Sicht um Standardisierung und Segmentierung nach \gls{iec} 62443~\parencite[S. 41--43]{h.tsukisawaStandardization2024}. Für die vorliegende Arbeit sind diese Quellen besonders relevant, weil sie die funktionale Entkopplung als regionsübergreifendes Vergleichsmerkmal sichtbar machen.
+~\cite{xiangliuCyber2020} stellen ein herstellerneutrales Komponenten- und Risikomodell für vernetzte Zugsteuerungssysteme bereit, das in dieser Arbeit als gemeinsamer technischer Bezugsrahmen dient.~\cite{iwamotoTrain2024} beschreiben dagegen mit der vom Übertragungsweg unabhängigen Zugsteuerung einen spezifischen japanischen Forschungsansatz, der die Sicherheitslogik vom Transportmedium entkoppelt.~\cite{h.tsukisawaStandardization2024} ergänzen diese Sicht um Standardisierung und Segmentierung nach \gls{iec} 62443. Für die vorliegende Arbeit sind diese Quellen besonders relevant, weil sie die funktionale Entkopplung als regionsübergreifendes Vergleichsmerkmal sichtbar machen.
 
 \subsubsection{High-Assurance-Architekturen, Angriffserkennung und dynamische Abwehr}
-Schulz et al. und Tverdyshev untersuchen \gls{mils} und \textit{Separation Kernels} zur Isolation unterschiedlich kritischer Softwarekomponenten und zur Entkopplung von Lebenszyklen~\parencite[S. 31--35]{schulzIntegration2019}~\parencite[S. 80--83]{tverdyshevCertMILS2019}. Melaragno et al. adressieren mit \gls{rrids} die passive Angriffserkennung im Bahnfunk, während Poschinger et al. die Einsatzgrenzen von \gls{mtd}-Verfahren in zeitkritischen Netzen untersuchen~\parencite[S. 39--48]{melaragnoRail2016}~\parencite[S. 66--68, 121]{poschingerOpenMTD2020}. Diese Arbeiten werden hier nicht als eigenständige Zielarchitekturen, sondern als ergänzende Mechanismen bewertet.
+~\cite{schulzIntegration2019} und ~\cite{tverdyshevCertMILS2019} untersuchen \gls{mils} und \textit{Separation Kernels} zur Isolation unterschiedlich kritischer Softwarekomponenten und zur Entkopplung von Lebenszyklen. ~\cite{melaragnoRail2016} adressieren mit \gls{rrids} die passive Angriffserkennung im Bahnfunk, während ~\cite {poschingerOpenMTD2020} die Einsatzgrenzen von \gls{mtd}-Verfahren in zeitkritischen Netzen untersuchen. Diese Arbeiten werden hier nicht als eigenständige Zielarchitekturen, sondern als ergänzende Mechanismen bewertet.
 
 \subsubsection{Umfassende Systemliteratur}
-Trinckauf et al. liefern mit \textit{ETCS in Deutschland} die technische Gesamtgrundlage für \gls{etcs}, \gls{rmr}/\gls{frmcs}, Baselines und das Zusammenspiel von \textit{Safety} und \textit{Security}~\parencite[S. 49, 123, 204--211]{trinckaufETCS2024}. Im Unterschied dazu fokussiert die vorliegende Arbeit nicht auf die vollständige Beschreibung eines nationalen \gls{etcs}-Rollouts, sondern auf die sicherheitsbezogene Vergleichbarkeit mit japanischen Ansätzen.
+~\cite{trinckaufETCS2024} liefern mit \textbf{ETCS in Deutschland} eine umfassende technische Grundlage zu \gls{etcs}, \gls{rmr}/\gls{frmcs}, Baselines sowie zum Zusammenspiel von \textit{Safety} und \textit{Security}. Im Unterschied dazu fokussiert die vorliegende Arbeit nicht auf die vollständige Beschreibung eines nationalen \gls{etcs}-Rollouts, sondern auf die sicherheitsbezogene Vergleichbarkeit mit japanischen Ansätzen.
 
 \subsection{Sicherheitsarchitektur: Interoperabilität \textit{vs.} betreiberspezifische Diversität}
 \label{sec:Sicherheitsarchitektur_Interoperabilität_vs_Betreiberspezifische_Diversität}
-Europas zentrale Stärke ist der gemeinsame interoperable Rahmen von \gls{ertms}/\linebreak \gls{etcs}~\parencite[S. 49]{trinckaufETCS2024}. Einheitliche Schnittstellen vereinfachen grenzüberschreitenden Betrieb, gemeinsame Zertifizierung und langfristig auch koordinierte Migrationen. Dieselbe Vereinheitlichung erzeugt jedoch eine gemeinsame Abhängigkeit: Wenn ein weit verbreitetes Protokoll oder eine gemeinsame Netzkomponente eine Schwachstelle besitzt, kann diese einen großen Teil der interoperablen Systemlandschaft betreffen. Die Herausforderung besteht daher nicht in der Standardisierung selbst, sondern darin, Standards so zu gestalten, dass kryptographische und kommunikative Komponenten ohne jahrzehntelange Bindung an veraltete Verfahren austauschbar bleiben.
+Europas zentrale Stärke ist der gemeinsame interoperable Rahmen von \gls{ertms}/\linebreak \gls{etcs}~\parencite[S. 38--40]{trinckaufETCS2024}. Einheitliche Schnittstellen vereinfachen grenzüberschreitenden Betrieb, gemeinsame Zertifizierung und langfristig auch koordinierte Migrationen. Dieselbe Vereinheitlichung erzeugt jedoch eine gemeinsame Abhängigkeit: Wenn ein weit verbreitetes Protokoll oder eine gemeinsame Netzkomponente eine Schwachstelle besitzt, kann diese einen großen Teil der interoperablen Systemlandschaft betreffen. Die Herausforderung besteht daher nicht in der Standardisierung selbst, sondern darin, Standards so zu gestalten, dass kryptographische und kommunikative Komponenten ohne jahrzehntelange Bindung an veraltete Verfahren austauschbar bleiben.
 
 Die japanische Heterogenität ist dagegen nicht automatisch als \textit{Security through Diversity} zu bewerten. Unterschiedliche Betreiber- und Herstellerlösungen können zwar die Reichweite eines einzelnen implementierungsspezifischen Fehlers begrenzen; daraus folgt jedoch kein inhärenter Sicherheitsvorteil. Heterogenität erschwert zugleich einheitliche Sicherheitsbewertungen, Patch-Prozesse, Personalqualifikation und interoperable Migrationen~\parencite{yanaseJapanese2011}. Die belastbarere Schlussfolgerung lautet deshalb: Diversität kann gemeinsame Fehlerdomänen verkleinern, erhöht aber die organisatorische und technische Sicherheitskomplexität.
 
@@ -267,19 +276,21 @@ Damit ergibt sich ein Zielkonflikt. Europa muss verhindern, dass Interoperabilit
 
 \subsection{Kryptographische Alterung und architektonische Entkopplung}
 \label{sec:Kryptographische_Schwachstellen_und_MILS-basierte_Architekturkapselung}
-Die von Chothia et al. nachgewiesenen Schwachstellen des traditionellen \textit{EuroRadio}-Schutzes zeigen ein grundsätzliches Lebenszyklusproblem: Ein Zugsicherungssystem kann über Jahrzehnte betrieben werden, während kryptographische Verfahren wesentlich schneller altern~\parencite[S. 751--754]{chothiaAttack2017}. Ein Austausch des Algorithmus allein löst dieses Problem nur temporär. Langfristig ist entscheidend, ob die Architektur spätere Sicherheitsupdates erlaubt, ohne den gesamten \textit{Safety}-Kern neu entwickeln oder vollständig neu qualifizieren zu müssen.
+Die von ~\cite{chothiaAttack2017} nachgewiesenen Schwachstellen des traditionellen \textit{EuroRadio}-Schutzes zeigen ein grundsätzliches Lebenszyklusproblem: Ein Zugsicherungssystem kann über Jahrzehnte betrieben werden, während kryptographische Verfahren wesentlich schneller altern. Ein Austausch des Algorithmus allein löst dieses Problem nur temporär. Langfristig ist entscheidend, ob die Architektur spätere Sicherheitsupdates erlaubt, ohne den gesamten \textit{Safety}-Kern neu entwickeln oder vollständig neu qualifizieren zu müssen.
 
-Hier ergänzen sich zwei in der Literatur getrennt behandelte Ideen. \gls{mils} und \textit{Separation Kernels} isolieren Kommunikations- und Sicherheitsdienste von der sicherheitskritischen Steuerungslogik~\parencite[S. 31--35]{schulzIntegration2019}. \gls{frmcs} verfolgt auf Netzebene ebenfalls eine funktionale Entkopplung von Anwendung, Dienst und Transport~\parencite[S. 123, 211]{trinckaufETCS2024}. Der japanische \gls{rtri}-Ansatz geht aus einer anderen Ausgangslage in dieselbe Richtung: Sicherheitsentscheidungen sollen nicht davon abhängen, dass ein bestimmter Übertragungsweg selbst vertrauenswürdig ist~\parencite[S. 1--4]{iwamotoTrain2024}.
+Hier ergänzen sich zwei in der Literatur getrennt behandelte Ideen. \gls{mils} und \textit{Separation Kernels} isolieren Kommunikations- und Sicherheitsdienste von der sicherheitskritischen Steuerungslogik~\cite{schulzIntegration2019}. \gls{frmcs} verfolgt auf Netzebene ebenfalls eine funktionale Entkopplung von Anwendung, Dienst und Transport~\parencite[S. 125--152]{trinckaufETCS2024}. Der japanische \gls{rtri}-Ansatz geht aus einer anderen Ausgangslage in dieselbe Richtung: Sicherheitsentscheidungen sollen nicht davon abhängen, dass ein bestimmter Übertragungsweg selbst vertrauenswürdig ist~\parencite[S. 1--4]{iwamotoTrain2024}.
 
 Die gemeinsame Lehre ist daher nicht, dass eine bestimmte Technologie übernommen werden sollte, sondern dass \textit{Security}-Mechanismen als austauschbare, klar abgegrenzte Dienste behandelt werden müssen. Gleichzeitig darf diese Entkopplung nicht mit vollständiger Unabhängigkeit verwechselt werden: Gemeinsame Gateways, Identitätsdienste, Schlüsselverwaltung oder Zertifikatsinfrastrukturen können weiterhin zentrale Fehler- und Angriffspunkte bilden. Gerade diese verbleibenden gemeinsamen Abhängigkeiten sollten in Sicherheitsnachweisen explizit modelliert werden.
 
 \subsection{Verfügbarkeit, Angriffserkennung und Redundanz}
 \label{sec:IDS_MTD_und_Redundanzkonzepte}
-Integritäts- und Authentizitätsschutz verhindern keine Funkstörung. Für Level~2/3 und vergleichbare funkbasierte Systeme bleibt Verfügbarkeit deshalb eine eigenständige Sicherheitsgrenze. Das \textit{Fail-Safe}-Prinzip sorgt dafür, dass Kommunikationsverlust nicht unkontrolliert in eine unsichere Fahrt übergeht; derselbe Mechanismus macht Verfügbarkeitsangriffe jedoch betrieblich wirksam~\parencite[S. 56--59]{gaggeroSurvey2024}. Der GSM-R-Vorfall vom 23. Juni 2026 zeigt zudem, dass nicht nur Angriffe, sondern auch Software-, Umschalt- und Betriebsfehler gemeinsame Kommunikationsinfrastruktur großflächig beeinträchtigen können~\cite{dbinfragoUrsacheZugfunkStoerung2026}.
+Integritäts- und Authentizitätsschutz verhindern keine Funkstörung. Für \gls{etcs} Level~2/3 und vergleichbare funkbasierte Systeme bleibt Verfügbarkeit deshalb eine eigenständige Sicherheitsgrenze. Das \textit{Fail-Safe}-Prinzip sorgt dafür, dass Kommunikationsverlust nicht unkontrolliert in eine unsichere Fahrt übergeht; derselbe Mechanismus macht Verfügbarkeitsangriffe jedoch betrieblich wirksam \parencite[S. 56--59]{gaggeroSurvey2024}. Der GSM-R-Vorfall vom 23. Juni 2026 zeigt zudem, dass nicht nur Angriffe, sondern auch Software-, Umschalt- und Betriebsfehler gemeinsame Kommunikationsinfrastruktur großflächig beeinträchtigen können~\cite{dbinfragoUrsacheZugfunkStoerung2026}.
 
-Ergänzende Mechanismen adressieren unterschiedliche Teile dieses Problems. Passive \gls{ids} wie \gls{rrids} können anomale Nachrichtenfolgen erkennen, ohne selbst in den Steuerungspfad einzugreifen~\parencite[S. 60--63]{melaragnoRail2016}. \gls{mtd}-Verfahren können Aufklärung und wiederverwendbare Zielinformationen erschweren, sind für harte Echtzeitpfade jedoch nur begrenzt geeignet, wenn zusätzliche Synchronisations- oder Adressierungsdynamik die deterministische Kommunikation beeinträchtigt~\parencite[S. 121]{poschingerOpenMTD2020}. Sie sind daher eher als ergänzender Schutz für weniger zeitkritische Management- und Backend-Schnittstellen zu bewerten.
+Ergänzende Mechanismen adressieren unterschiedliche Teile dieses Problems. Passive \gls{ids} wie \gls{rrids} können anomale Nachrichtenfolgen erkennen, ohne selbst in den Steuerungspfad einzugreifen~\cite{melaragnoRail2016}. \gls{mtd}-Verfahren können die Aufklärung erschweren und die zeitliche Nutzbarkeit gewonnener Zielinformationen reduzieren. Das untersuchte \textit{Conference Paper} zeigt zugleich, dass periodische Adress- beziehungsweise Portänderungen sowie Zeitabweichungen zu inkonsistenten Zuständen, Verbindungsinstabilitäten und fehlgeschlagenen Paketübertragungen führen können. Für deterministische Echtzeitpfade lässt sich daraus ableiten, dass solche Mechanismen nur unter Berücksichtigung ihrer Auswirkungen auf Synchronisation und Timing eingesetzt werden sollten
+%können Aufklärung und wiederverwendbare Zielinformationen erschweren, sind für harte Echtzeitpfade jedoch nur begrenzt geeignet, wenn zusätzliche Synchronisations- oder Adressierungsdynamik die deterministische Kommunikation beeinträchtigt
+~\parencite[S. 32-38]{poschingerOpenMTD2020}. Sie sind daher eher als ergänzender Schutz für weniger zeitkritische Management- und Backend-Schnittstellen zu bewerten.
 
-Auch Redundanz ist nur dann wirksam, wenn die redundanten Pfade tatsächlich unterschiedliche Fehlerdomänen besitzen. Zwei Funkwege helfen wenig, wenn beide von demselben Kernnetz, demselben Identitätsdienst oder derselben fehlerhaften Umschaltlogik abhängen. Multipath-Ansätze in \gls{frmcs} können die Resilienz gegen den Ausfall einzelner Träger erhöhen, garantieren aber keinen Schutz gegen breitbandiges oder koordiniertes \textit{Jamming}. Für eine belastbare Verfügbarkeitsarchitektur müssen deshalb Funkdiversität, unabhängige Kernnetzpfade, kontrollierte Rückfallebenen und regelmäßig getestete Umschaltprozesse gemeinsam betrachtet werden.
+Auch Redundanz ist nur dann wirksam, wenn die redundanten Pfade tatsächlich unterschiedliche Fehlerdomänen besitzen. Zwei Funkwege helfen wenig, wenn beide von demselben Kernnetz, demselben Identitätsdienst oder derselben fehlerhaften Umschaltlogik abhängen. Multipath-Ansätze in \gls{frmcs} können die Resilienz gegen den Ausfall einzelner Träger erhöhen, garantieren aber keinen Schutz gegen breitbandiges oder koordiniertes \textit{Jamming}. Für eine belastbare Verfügbarkeitsarchitektur müssen deshalb Funkdiversität, unabhängige Kernnetzpfade, kontrollierte Rückfallebenen und regelmäßig getestete Umschaltprozesse gemeinsam betrachtet werden~\parencite[S. 114--117]{trinckaufETCS2024}.
 
 \subsection{Konsequenzen für zukunftsfähige Migrationspfade}
 \label{sec:Zukunftsfähige_Migrationspfade_FRMCS_und_IEC_62280}
@@ -287,8 +298,8 @@ Aus dem Vergleich lassen sich vier konkrete Architekturprinzipien ableiten, die 
 
 \begin{enumerate}
     \item \textbf{Stabile Safety-Schnittstelle, austauschbarer Transport:} Die sicherheitskritische Steuerungslogik sollte nur klar definierte Kommunikationsdienste voraussetzen und nicht von einer bestimmten Funkgeneration abhängen. \gls{frmcs} und der \gls{rtri}-Ansatz zeigen hierfür unterschiedliche, aber konvergierende Wege.
-    \item \textbf{Aktualisierbare Security-Schicht:} Kryptographie, Schlüsselverwaltung und Kommunikationssoftware sollten so partitioniert sein, dass Sicherheitsupdates mit begrenztem Einfluss auf den \textit{Safety}-Nachweis möglich sind. High-Assurance-Partitionierung kann hierfür eine technische Grundlage bilden~\parencite[S. 31--35]{schulzIntegration2019}.
-    \item \textbf{Redundanz über unabhängige Fehlerdomänen:} Mehrere Übertragungswege sollten nicht nur physisch, sondern auch hinsichtlich Kernnetz, Betreiber, Konfiguration und Umschaltlogik ausreichend unabhängig sein. Andernfalls bleibt ein gemeinsamer \gls{spof} bestehen.
+    \item \textbf{Aktualisierbare Security-Schicht:} Kryptographie, Schlüsselverwaltung und Kommunikationssoftware sollten so partitioniert sein, dass Sicherheitsupdates mit begrenztem Einfluss auf den \textit{Safety}-Nachweis möglich sind. High-Assurance-Partitionierung kann hierfür eine technische Grundlage bilden~\cite{schulzIntegration2019}.
+    \item \textbf{Redundanz über unabhängige Fehlerdomänen:} Mehrere Übertragungswege sollten nicht nur physisch, sondern auch hinsichtlich Kernnetz, Betreiber, Konfiguration und Umschaltlogik ausreichend unabhängig sein. Andernfalls bleibt ein gemeinsamer \textit{Single Point of Failure} \gls{spof} bestehen.
     \item \textbf{Kontinuierliche Überwachung und migrationsfähige Standards:} Angriffserkennung, Protokollversionierung und sichere Abwärtskompatibilität müssen gemeinsam geplant werden. Interoperabilität darf nicht bedeuten, unsichere Altverfahren unbegrenzt mitzuführen; zugleich darf ein Sicherheitsupdate den grenzüberschreitenden Betrieb nicht unkontrolliert fragmentieren.
 \end{enumerate}
 
